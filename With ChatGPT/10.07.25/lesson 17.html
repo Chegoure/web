@@ -1,0 +1,148 @@
+<!-- Урок 17: Итоговая форма анкеты
+
+Всё, что ты учил про формы, теперь в одном проекте. Покажем, что ты не просто бариста, а будущий веб-разработчик
+
+ЗАДАНИЕ:
+
+Создай анкету соискателя на работу в кофейню, используя:
+
+Обязательные элементы:
+
+Личные данные:
+- `<label>` + `<input type="text">` для имени, фамилии
+- `<input type="email">` для почты
+
+Выбор напитка (радиокнопки):
+- минимум 3 варианта
+
+Выбор добавок (чекбоксы):
+- минимум 3 варианта
+
+Выпадающий список:
+- опыт работы: нет, 1–2 года, 3+
+
+`<textarea>`:
+- поле «О себе»
+
+Кнопки:
+- `<button type="submit">`
+- `<button type="reset">`
+
+Всё завернуто в:
+- `<form>` с `method="post"` и `action="#" `
+
+Семантика:
+- используй `<fieldset>` и `<legend>` для разделения
+- `<section>`, `<header>`, `<main>`, `<footer>` — для логики страницы
+ -->
+
+ <!DOCTYPE html>
+ <html lang="ru">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>Анкета соискателя</title>
+ </head>
+ <body>
+
+ 	<header>
+ 		<h1>Анкета бариста в SZHOSKY COFFEE</h1>
+ 		<hr>
+ 	</header>
+
+ 	<main>
+ 		<form action="#" method="post">
+ 			<section>
+ 				<fieldset>
+ 					<legend>Кто вы, таинственный незнакомец...</legend>
+ 					
+ 					<h2>Мы - твоя дримтим! А кто ты?</h2>
+
+ 					<label for="first_name">Имя:</label>
+ 					<input type="text" id="first_name" name="first_name">
+ 					<br><br>
+
+ 					<label for="last_name">Фамилия:</label>
+ 					<input type="text" id="last_name" name="last_name">
+ 					<br><br>
+
+ 					<label for="email">Твой Email:</label>
+ 					<input type="email" id="email" name="email">
+ 					<br><br>
+
+ 				</fieldset>
+ 			</section>
+ 			<br>
+
+ 			<section>
+ 				<fieldset>
+ 					<legend>Пара вопросов о тебе:</legend>
+ 					<h4><i>Кто то украл твой сладкий рулет...</i>Ой! Это не отсюда!</h4>
+ 					<h2>Какой рабочий график ты бы себе хотел(а)?</h2>
+
+ 					<input type="radio" id="twobytwo" name="work_schedule" value="twobytwo">
+ 					<label for="twobytwo">2\2</label>
+ 					<br><br>
+
+ 					<input type="radio" id="threebythree" name="work_schedule" value="threebythree">
+ 					<label for="threebythree">3\3</label> 
+ 					<br><br>
+
+ 					<input type="radio" id="fivebytwo" name="work_schedule" value="fivebytwo">
+ 					<label for="fivebytwo">5\2</label> 
+ 					<br><br>
+
+ 					<h2>Какие у тебя есть вредные привычки?</h2>
+ 					<p><i>О которых не знает твоя мама...</i></p>
+
+ 					<input type="checkbox" id="alcohol" name="habits" value="alcohol">
+ 					<label for="alcohol">Пью</label><br><br>
+
+ 					<input type="checkbox" id="smoking" name="habits" value="smoking">
+ 					<label for="smoking">Курю</label><br><br>
+
+ 					<input type="checkbox" id="abuse" name="habits" value="abuse">
+ 					<label for="abuse">Ругаюсь матом</label><br><br>
+ 				</fieldset>									
+ 			</section>
+ 			<br>
+
+ 			<section>
+ 				<fieldset>
+ 					<h2>Ты уже работал(а) с кофе?</h2>
+
+ 					<label for="experience">Я работал...</label>
+ 					<select name="experience" id="experience">
+ 						<option value="no exp">Но не с кофе :(</option>
+ 						<option value="year">Меньше 1 года</option>
+ 						<option value="one_or_more">1 и более лет</option>
+ 					</select>
+ 				</fieldset>
+ 			</section>
+ 			<br>
+
+ 			<section>
+ 				<fieldset>
+ 					<h2>Чем увлекаешься в свободное время?</h2>
+
+ 					<textarea id="hobby" name="hobby" cols="40" rows="5" placeholder="Дерусь на ножах, хожу на руках..."></textarea>
+  				</fieldset>
+ 			</section>
+ 			<br>
+
+ 			<section>
+ 				<fieldset>
+ 					<legend>Ну давай уже! Жми!</legend>
+ 						<button type="submit">Отправить анкету</button>
+ 						<button type="reset">Очистить всё</button>
+ 						<button type="button">Ставки на спорт - 1XBET</button>
+ 				</fieldset>
+ 			</section>			
+ 		</form>
+ 	</main>
+ 	<hr> 
+ 	<footer>
+ 		<p>© 2025 Szhosky Coffee. Все права защищены.</p>
+ 	</footer>
+ </body>
+ </html>
