@@ -1,0 +1,66 @@
+<!-- Задание:
+
+Сделай HTML-страницу с такими элементами:
+
+Заголовок и краткое описание, например: «Любимые видео и аудио».
+
+Один `<audio>` с хотя бы одной `<source>` (можно фейковый путь, типа `music.mp3`).
+
+Один `<video>` с `<source>` и атрибутом `controls`, а также `poster` (можно фейковую картинку).
+
+Один `<iframe>`, в котором загружена любая реальная страница (например, Google Maps, YouTube, или сайт кофейни).
+
+Важно: сделай всё семантически грамотно, с `<!DOCTYPE>`, `<html>`, `<head>`, `<body>`, `<main>`, `<section>` и т.д. -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Гендальф</title>
+</head>
+
+<body>
+
+	<header>
+		<h1>Привет, Фродо!</h1>
+		<p>Песню я тебе вставлять не буду, но видосик будет стопудово!</p>
+		<hr>
+	</header>
+
+	<main>
+
+		<section>
+			<h2>Музыка для Фродо</h2>
+			<audio controls>
+				<source src="music.mp3" type="audio/mp3">
+				Сори, Фродо, но тут и не пахло музыкой никога.
+			</audio>
+		</section>
+		<hr>
+
+		<section>
+			<h2>Видео для фродо</h2>
+			<video controls poster="Gandalf.jpg" width="853"> 
+				<source src="video.mp4" type="video/mp4">
+				Фродо, тут тоже не было видео, но оно будет дальше!	
+			</video>
+		</section>
+		<hr>
+
+		<section>
+			<h2>Ну тут то, Фродо ты меня точно увидишь!</h2>
+			<iframe 
+			src="https://vkvideo.ru/video_ext.php?oid=-174061350&id=456247842&hd=2&autoplay=1" 
+			width="853" 
+			height="480" 
+			title="ARE YOU READY?"
+			loading="lazy"
+			allowfullscreen>
+			</iframe>			
+		</section>
+
+	</main>
+	
+</body>
+</html>
