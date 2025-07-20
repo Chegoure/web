@@ -1,0 +1,33 @@
+.box {
+    width: 300px;
+    height: 400px;
+    background: #adadad;
+}
+#special {
+    margin: 0 auto;
+}
+.box.symbol {
+    vertical-align: middle;
+    display: inline-block;
+    background: darkred;
+}
+.text {
+    text-align: center;
+}
+.inline {
+    text-align: center;
+}
+.line {
+    display: inline;
+    background: darkolivegreen;
+}
+.flex {
+    display: flex;
+    background: #777;
+    height: 600px;
+}
+.modern {
+    width: 33%;
+    background: #1500ff;
+    margin: 3px;
+}
