@@ -118,9 +118,8 @@ body {
   ```
 
 ### Урок 2: Цвет фона
-- **Свойство**: `background-color` зада полиции
+- **Свойство**: `background-color` задаёт цвет фона для элемента.
 ```markdown
-ёт цвет фона элемента.
   ```css
   #selector {
     background-color: black;
@@ -516,4 +515,65 @@ body {
 
 - Конспект из телеграмм: с 10.07.2025 по 22.07.2025.
 
+### Урок 15: overflow
+- **Свойство**:  управляет тем, как содержимое блока ведёт себя, если оно вылезает за его границы.
 
+Значения:
+| Значение  | Что делает                                                       |
+| --------- | ---------------------------------------------------------------- |
+| `visible` | По умолчанию. Всё, что не влезло — **торчит наружу**.            |
+| `hidden`  | Всё, что не влезло — **обрезается (скрывается)**.                |
+| `scroll`  | Появляются **скролл-бары всегда**, даже если прокрутка не нужна. |
+| `auto`    | **Появляются скроллы, только если нужно**.                       |
+
+
+**Пример кода**:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urok 15 - Overflow</title>
+  <style>
+    .box {
+      height: 100px;
+      border: 3px solid black;
+      padding: 10px;
+      background-color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .visible {
+      overflow: visible;
+    }
+
+    .hidden {
+      overflow: hidden;
+    }
+
+    .scroll {
+      overflow: scroll;
+    }
+
+    .auto {
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box visible">
+    <strong>visible:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, molestias similique rerum laboriosam dolore ut ducimus culpa tempore repellendus pariatur maiores, expedita aperiam, animi est commodi odit eveniet iste natus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque aliquid vero fugiat, inventore est facilis, aut sed veniam vel odit ex temporibus quia sit, minima esse eius nisi molestias. Ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aspernatur molestiae sunt explicabo beatae fuga, consequatur numquam, deleniti libero totam modi! Odit error doloribus excepturi, deserunt corrupti adipisci distinctio minima.
+  </div>
+  <div class="box hidden">
+    <strong>hidden:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, molestias similique rerum laboriosam dolore ut ducimus culpa tempore repellendus pariatur maiores, expedita aperiam, animi est commodi odit eveniet iste natus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque aliquid vero fugiat, inventore est facilis, aut sed veniam vel odit ex temporibus quia sit, minima esse eius nisi molestias. Ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aspernatur molestiae sunt explicabo beatae fuga, consequatur numquam, deleniti libero totam modi! Odit error doloribus excepturi, deserunt corrupti adipisci distinctio minima.
+  </div>
+  <div class="box scroll">
+    <strong>scroll:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, molestias similique rerum laboriosam dolore ut ducimus culpa tempore repellendus pariatur maiores, expedita aperiam, animi est commodi odit eveniet iste natus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque aliquid vero fugiat, inventore est facilis, aut sed veniam vel odit ex temporibus quia sit, minima esse eius nisi molestias. Ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aspernatur molestiae sunt explicabo beatae fuga, consequatur numquam, deleniti libero totam modi! Odit error doloribus excepturi, deserunt corrupti adipisci distinctio minima.
+  </div>
+  <div class="box auto">
+    <strong>auto:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, molestias similique rerum laboriosam dolore ut ducimus culpa tempore repellendus pariatur maiores, expedita aperiam, animi est commodi odit eveniet iste natus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque aliquid vero fugiat, inventore est facilis, aut sed veniam vel odit ex temporibus quia sit, minima esse eius nisi molestias. Ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aspernatur molestiae sunt explicabo beatae fuga, consequatur numquam, deleniti libero totam modi! Odit error doloribus excepturi, deserunt corrupti adipisci distinctio minima.
+  </div>
+</body>
+</html>
+```
