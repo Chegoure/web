@@ -664,7 +664,77 @@ p { color: blue; } /* Все <p> будут синими */
 • Дочерний: `div > p` (только `<p>`, которые являются прямыми детьми `<div>`).
 
 • Соседний: `h1 + p` (первый `<p>` после `<h1>`).
-  
+
 • Общий сосед: `h1 ~ p` (все `<p>` после `<h1>` на том же уровне).
 
 7. **Псевдоклассы:** Стили для определённых состояний.
+```css
+a:hover { color: red; } /* Цвет ссылки при наведении */
+  ```
+8. Псевдоэлементы: Стили для части элемента.
+```css
+p::first-letter { font-size: 2em; } /* Первая буква абзаца */
+  ```
+Пример кода:
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Селекторы</title>
+  <style>
+    /* По тегу */
+    h1 {
+      color: navy;
+      text-align: center;
+    }
+
+    /* По классу */
+    .intro {
+      background: #f0f0f0;
+      padding: 10px;
+    }
+
+    /* По ID */
+    #main-title {
+      font-size: 28px;
+    }
+
+    /* По атрибуту */
+    input[type="text"] {
+      border: 2px solid blue;
+      padding departmental
+
+    /* Универсальный селектор */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Комбинированный селектор (потомок) */
+    .container p {
+      margin: 10px;
+    }
+
+    /* Псевдокласс */
+    a:hover {
+      color: green;
+    }
+
+    /* Псевдоэлемент */
+    p::first-line {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="main-title">Пример селекторов</h1>
+    <p class="intro">Это абзац с классом intro, он внутри container.</p>
+    <p>Обычный абзац внутри container.</p>
+    <input type="text" placeholder="Текстовое поле">
+    <p>Другой абзац.</p>
+    <a href="#">Наведи на меня!</a>
+  </div>
+</body>
+</html>
+```
