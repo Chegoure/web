@@ -1,0 +1,54 @@
+.container {
+    width: 800px;
+    margin: 30px;
+    height: 400px;
+    background: #777777;
+}
+.box {
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    height: 150px;
+    background: gold;
+    display: inline-block;
+    box-sizing: border-box;
+    transition: all .4s;
+}
+.box:hover {
+    box-shadow: 10px 10px 10px black;
+}
+.special {
+    top: 200px;
+}
+
+.relative .box { /*вложженость*/
+    position: relative;
+}
+
+.moved {
+    bottom: 20px;
+}
+.absolute_wrapper{
+    position: relative;
+}
+.abs {
+    position: absolute;
+
+}
+.test {
+    position: absolute;
+    background: coral;
+
+}
+.absolute {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fixed {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}

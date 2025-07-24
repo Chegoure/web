@@ -3,6 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
+body, html {
+    height: 100%;
+}
+#app {
+    background: darkolivegreen;
+    height: 100%;
+}
 .container {
     width: 1420px;
     background: #adadad;
