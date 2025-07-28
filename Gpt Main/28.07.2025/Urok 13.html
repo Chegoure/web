@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Urok 13</title>
+	<style>
+		.parent {
+			width: 800px;
+			height: 600px; 
+			background: #adadad;
+			border: 1px solid black;
+			box-shadow: 2px 2px 12px gray;
+			position: relative;
+		}
+		.child {
+			width: 200px;
+			height: 250px;
+			background: indianred;
+			position: absolute;
+			border: 1px solid black;
+			left: 33%;
+			top: 20%;
+			margin: 0;
+			text-align: center;
+		}
+		.fix {
+			position: fixed;
+			background: gold;
+			border: 1px solid black;
+			padding: 10px;
+			right: 50px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="parent">BATYA
+		<div class="child">synok</div>
+		<div class="fix">FIKSIK</div>
+	</div>
+
+</body>
+</html>
+
+<!-- 🛠 Задание:
+
+Создай три блока:
+
+    Один родительский с position: relative;
+
+    Внутри него — один с position: absolute;, чтобы ты мог показать, что он от родителя отталкивается.
+
+    И один с position: fixed;, чтобы он висел, например, в правом верхнем углу браузера и не двигался при прокрутке.
+
+👉 Сделай фон, рамки и текст — как ты умеешь — чтобы всё было наглядно. -->
