@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Urok 12</title>
+	<style>
+		body {
+			font-family: serif;
+			font-size: 32px;
+			text-shadow: 5px 15px 10px lightslategrey;
+		}
+		.container {
+			width: 1000px;
+			height: 1000px;
+			background: #adadad; 
+
+		}
+		.box {
+			width: 200px;
+			height: 400px;
+			border: 2px solid black;
+			border-radius: 10px;
+			box-shadow: 2px 2px 5px lightslategrey;
+			background: palevioletred;
+			margin: 10px;
+			padding: 10px;
+		}
+		.static {
+			position: static;
+		}
+
+		.relative {
+			bottom: 350px;
+			left: 100px;
+			position: relative;	
+		}
+	</style>
+</head>
+<body>
+	<div class="container">	
+		<div class="box static">static</div>
+		<div class="box relative">relative</div>
+	</div>
+</body>
+</html>
+
+<!-- 💪 Задание:
+
+Создай два блока:
+
+    Один с position: static
+
+    Один с position: relative, у которого top и left — например, top: 20px; left: 30px
+
+Каждый блок сделай с рамкой, цветом и текстом, чтобы визуально было понятно, как они себя ведут. -->
