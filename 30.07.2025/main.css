@@ -73,7 +73,7 @@ li {
 .available-layouts {
     background-color: #eaeaea;
     border-bottom: 2px solid black;
-    padding: 4rem;
+    padding: 4rem 0;
 }
 .container {
     max-width: 1200px;
@@ -94,5 +94,123 @@ li {
 }
 .layout_item {
     border: 2px solid black;
-
+    padding: 20px;
+    text-align: center;
 }
+.layout_item-image {
+    height: 200px;
+    border: 2px solid black;
+    background-image: url("./kotik.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.layout_item-title {
+    padding: 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: #d1d1d1;
+}
+.layout_item-subtitle {
+    border: 1px solid black;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+}
+.layout_item-button {
+    border: 2px solid black;
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+footer {
+    padding: 10px 0 30px 0;
+}
+.footer_menu {
+    display: flex;
+    gap: 2rem;
+}
+.footer_menu-item {
+    flex-grow: 1;
+}
+.footer_menu-item-title {
+    padding: 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #d1d1d1;
+}
+.footer_menu-item-link {
+    border: 1px solid black;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+#modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5)
+}
+#modal.active{
+    display: block
+}
+.modal_content {
+    margin: 0 auto;
+    width: 300px;
+    background-color: white;
+    color: black;
+    position: relative;
+    margin-top: 100px;
+}
+#close {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    background: crimson;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
