@@ -1538,6 +1538,97 @@ column-gap: 10px; /* Между колонками */
 • Если ячеек больше, чем задано в grid-template, Grid автоматически создаст новые строки (но лучше задавать явно).
 • Хочешь проверить, как выглядит сетка? Используй DevTools в браузере (F12 → выбери контейнер → вкладка Layout → включи Grid overlay).
 
+# 📦 Урок 24: CSS Grid — Выравнивание элементов
+Когда сетка уже создана, можно управлять **расположением** элементов внутри ячеек и самой сетки.
+## 🔹 Свойства для контейнера
+### 1. `justify-items`
+Выравнивание **по горизонтали** внутри ячеек:
+```css
+justify-items: start;   /* слева */
+justify-items: end;     /* справа */
+justify-items: center;  /* по центру */
+justify-items: stretch; /* растягивает (по умолчанию) */
+```
+### 2. **align-items**
+Выравнивание **по вертикали** внутри ячеек:
+```css
+align-items: start;     /* сверху */
+align-items: end;       /* снизу */
+align-items: center;    /* по центру */
+align-items: stretch;   /* растягивает (по умолчанию) */
+```
+## 🔹 Свойства для всей сетки
+### 3. justify-content
+Двигает всю сетку **по горизонтали**:
+```css
+justify-content: start;      /* влево */
+justify-content: end;        /* вправо */
+justify-content: center;     /* по центру */
+justify-content: space-between;
+justify-content: space-around;
+justify-content: space-evenly;
+```
+### 4. align-content
+ Двигает всю сетку **по вертикали** (работает, если высота контейнера больше сетки):
+ ```css
+align-content: start; 
+align-content: end;
+align-content: center;
+align-content: space-between;
+align-content: space-around;
+align-content: space-evenly;
+```
+## 🔹 Пример
+```html
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px;
+    gap: 10px;
+
+    justify-content: center; /* сетка по центру по горизонтали */
+    align-content: center;   /* сетка по центру по вертикали */
+
+    justify-items: center;   /* содержимое ячеек по центру по горизонтали */
+    align-items: center;     /* содержимое ячеек по центру по вертикали */
+
+    height: 400px;
+    background: lightgray;
+  }
+
+  .item {
+    background: tomato;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
