@@ -130,8 +130,10 @@ li {
     font-weight: bold;
     text-transform: uppercase;
 }
-.jumbo-foot {
+.jumbo-prefoot {
     margin: -35px 0 -35px 0;
+    border: none;
+    padding: 60px 0 35px 0;
 }
 footer {
     padding: 10px 0 30px 0;
@@ -151,7 +153,7 @@ footer {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1rem;
-    background-color: #d1d1d1;
+    background-color: #F0F0F0;
 }
 .footer_menu-item-link {
     border: 1px solid black;
