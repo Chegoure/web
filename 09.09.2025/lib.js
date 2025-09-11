@@ -9,13 +9,14 @@ const logMultTable = (rows, cols) => {
 }
 
 const getRoleStr = (mode) => {
-    let role = ''
+    let role
     switch(mode){
         case 0: role = 'guest'; break;
         case 1: role = 'user'; break;
         case 2: role = 'moderator'; break;
         case 3: role = 'admin'; break;
         case 4: role = 'GOD'; break;
+        default: role = 'unknown'; break;
     }
     console.log(role)
 }
