@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            display: flex;
+        }
+        .container__about {
+
+        }
+        .input_group{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        input {
+            border: none;
+            background-color: lightgrey;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container__about">
+            <div class="input_group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" placeholder="Введите имя">
+            </div>
+            <div class="input_group">
+                <label for="position">Должность</label>
+                <input type="text" id="position" placeholder="Введите должность">
+            </div>
+        </div>
+        <div class="container__testimonial">
+            <div class="input_group">
+                <label for="testimonial">Отзыв</label>
+                <input type="text" id="testimonial" placeholder="Впишите отзыв в данное поле">
+            </div>
+        </div>
+    </div>
+    <div class="app"></div>
+    <button id="btn">Добавить отзыв</button>
+    <script src="main2.js" ></script>
+</body>
+</html>
