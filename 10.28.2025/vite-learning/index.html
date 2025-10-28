@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пользователи — shadcn-стиль</title>
+  <style>
+    /* Общие настройки */
+    :root {
+      --radius: 12px;
+      --border: 1px solid hsl(240, 5%, 90%);
+      --background: #ffffff;
+      --card: #ffffff;
+      --foreground: #1a1a1a;
+      --muted: #f1f1f3;
+      --primary: #0969da;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+    #avatar-preview {
+      width: 150px;
+      height: 200px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      background-color: #f9fafb;
+      color: var(--foreground);
+      line-height: 1.5;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+    }
+
+    /* Карточка */
+    .card {
+      background: var(--card);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Сетка */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    /* Форма */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius);
+      font-size: 15px;
+      background: white;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #0757b7;
+    }
+
+    /* Список пользователей */
+    .user-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: var(--border);
+    }
+
+    .user-item:last-child {
+      border-bottom: none;
+    }
+
+    .user-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 24px;
+    }
+
+    .user-info h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .user-info p {
+      font-size: 14px;
+      color: #555;
+      margin: 2px 0;
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="grid">
+    <!-- Форма -->
+    <div class="card">
+      <h2 class="section-title">Добавить пользователя</h2>
+      <form>
+        <div class="form-group">
+          <label for="avatar">Аватар</label>
+          <input type="file" id="avatar" class="form-control" accept="image/*" />
+          <img id="avatar-preview" src="" alt="">
+        </div>
+        <div class="form-group">
+          <label for="name">Имя</label>
+          <input type="text" id="name" class="form-control" placeholder="Иван Иванов" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="ivan@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" class="form-control" placeholder="+7 (999) 123-45-67" />
+        </div>
+        <div class="form-group">
+          <label for="age">Возраст</label>
+          <input type="number" id="age" class="form-control" placeholder="25" />
+        </div>
+        <button id="create-profile" type="submit" class="btn">Добавить</button>
+      </form>
+    </div>
+
+    <!-- Список пользователей -->
+    <div id="user-list" class="card">
+      <h2 class="section-title">Список пользователей</h2>
+
+      <!-- Пример пользователя -->
+      <div class="user-item">
+        <img
+                src="https://masterpiecer-images.s3.yandex.net/5fd531dca6427c7:upscaled"
+                alt="Аватар Ивана Петрова"
+                class="user-avatar"
+        />
+        <div class="user-info">
+          <h3>Тот Самый</h3>
+          <p><strong>Email:</strong> ivan.petrov@example.com</p>
+          <p><strong>Телефон:</strong> +7 (900) 123-45-67</p>
+          <p><strong>Возраст:</strong> 30 лет</p>
+        </div>
+      </div>
+
+      <!-- Можно добавить ещё карточки сюда -->
+    </div>
+  </div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
