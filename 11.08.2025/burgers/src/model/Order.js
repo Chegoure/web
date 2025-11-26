@@ -1,5 +1,5 @@
-import {orderEl} from './elements'
-import renderElement from './renderElement'
+import {orderEl} from '../state/elements'
+import renderElement from '../render/renderElement'
 
 export default {
     products: [],
@@ -43,5 +43,11 @@ export default {
             })
 
         })
+    },
+    createOrder(){
+        const order = [...this.products]
+        this.products = []
+        this.renderProducts()
+        return order
     }
 }

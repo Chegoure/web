@@ -1,6 +1,6 @@
 import renderElement from './renderElement'
-import {burgerListEl} from './elements'
-import handleBurgerClick from './handleBurgerClick'
+import {burgerListEl} from '../state/elements'
+import handleBurgerClick from '../handlers/handleBurgerClick'
 
 export default (burger)=>{
     const burgerItemEl = renderElement('div', burgerListEl, {class: 'burger-item'})

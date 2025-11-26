@@ -1,6 +1,5 @@
-import Order from "./Order"
+import Order from "../model/Order"
 
 export default (burger)=>{
-    console.log(burger)
     Order.addProduct(burger)
 }
