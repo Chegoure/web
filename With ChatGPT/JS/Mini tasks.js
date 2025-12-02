@@ -488,3 +488,271 @@
 // ___________________________________________________________________________
 
 
+// Мини-проект: Список пользователей с проектами
+// Цель: создать объект с пользователями и их проектами, использовать методы для управления данными.
+// 1️⃣ Что нужно сделать
+// Создай массив users, где каждый элемент — объект с ключами:
+// name — имя пользователя
+// age — возраст
+// projects — массив объектов с title и year
+// Пример одного пользователя:
+// {
+//   name: "Илья",
+//   age: 30,
+//   projects: [
+//     { title: "Сайт", year: 2023 },
+//     { title: "Приложение", year: 2024 }
+//   ]
+// }
+// Сделай хотя бы 2–3 пользователя.
+// Добавь методы для каждого пользователя:
+// showProjects() — выводит все проекты пользователя
+// addProject(title, year) — добавляет новый проект
+
+// Добавь методы для всего массива пользователей:
+// showAllUsers() — выводит имя и возраст каждого пользователя
+// showDevelopersProjects() — выводит проекты только пользователей с isDeveloper === true
+// addProjectToUser(userName, title, year) — находит пользователя по имени и добавляет проект
+
+// Используй массив объектов и методы массива (forEach, map, filter) для реализации этих действий.
+
+// const users = [
+//     {
+//         name: 'Bimbo',
+//         age: 18,
+//         isDeveloper: true,
+//         projects: [
+//             {title: 'Site', year: 2023},
+//             {title: 'Shmite', year: 2024}
+//         ],
+//         showProjects(){
+//             this.projects.forEach(project => console.log(project.title))
+//         },
+//         addProject(title, year){
+//             this.projects.push({title: title, year: year})
+//         }
+        
+//     },
+//     {
+//         name: 'Bembo',
+//         age: 19,
+//         isDeveloper: false,
+//         projects: [
+//             {title: 'Fite', year: 2022},
+//             {title: 'Shmute', year: 2023}
+//         ],
+//         showProjects(){
+//             this.projects.forEach(project => console.log(project.title))
+//         },
+//         addProject(title, year){
+//             this.projects.push({title: title, year: year})
+//         }
+//     },
+//     {
+//         name: 'Bumbo',
+//         isDeveloper: true,
+//         age: 20,
+//         projects: [
+//             {title: 'Gite', year: 2021},
+//             {title: 'Shmote', year: 2022}
+//         ],
+//         showProjects(){
+//             this.projects.forEach(project => console.log(project.title))
+//         },
+//         addProject(title, year){
+//             this.projects.push({title: title, year: year})
+//         }
+//     } 
+// ]
+
+// const showAllUsers = ()=>{
+//     users.forEach(user => console.log(`Имя: ${user.name}, Возраст: ${user.age}`))
+// }
+// showAllUsers()
+
+// const showDevelopersProjects = () => {
+//     const developers = users.filter(user => user.isDeveloper)
+//     developers.forEach(dev => {
+//         console.log(`Проекты: ${dev.name}`)
+//         dev.projects.forEach(project => console.log("- " + project.title))
+//     })
+
+// }
+// showDevelopersProjects()
+
+// const addProjectToUser = (userName, title, year) => {
+//     const user = users.find(u => u.name === userName)
+//     if(user) {
+//         user.projects.push({title, year})
+//         console.log(`Добавлен проект для ${user.name}: ${title}`)
+//     }else {
+//         console.log(`Пользователь с именем ${userName} не найден`)
+//     }
+// }
+
+// addProjectToUser('Bumbo', 'rrrrr', 2222)
+
+// ___________________________________________________________________________
+
+// ЗАДАНИЕ
+// // У тебя есть массив объектов пользователей:
+// const users = [
+//     { name: "Илья", age: 30 },
+//     { name: "Аня", age: 22 },
+//     { name: "Женя", age: 27 }
+// ];
+
+// Твои задачи:
+// 1. Сделай функцию, которая вернёт массив только имён
+// Ожидаемый результат:
+// ["Илья", "Аня", "Женя"]
+
+// 2. Сделай функцию, которая вернёт пользователей старше 25
+// Ожидаемый результат:
+// [
+//   { name: "Илья", age: 30 },
+//   { name: "Женя", age: 27 }
+// ]
+
+// 3. Сделай функцию, которая принимает имя и выводит возраст
+// Пример:
+// showAge("Аня") // -> "Ане 22 года"
+
+// const users = [
+//     {name: 'Ilya', age: 30},
+//     {name: 'Petr', age: 25},
+//     {name: 'Gleb', age: 32}
+// ]
+
+// const showNames = ()=>{
+//     const namesArr = users.map(n => n.name)
+//     console.log(namesArr)
+// }
+// showNames()
+
+// const showOldest = ()=>{
+//     const oldest = users.filter(u => u.age > 25)
+//     console.log(oldest)
+// }
+// showOldest()
+
+// const showAge = (name) => {
+//     const findUser = users.find(n => n.name === name)
+//     if(findUser) {
+//         console.log(`Пользователю ${name} ${findUser.age} лет.`)
+//     }else {
+//         console.log(`Пользователь с таким именем не существует.`)
+//     }
+// }
+// showAge('Ilya')
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА — «Музыкальные треки»
+// Есть массив:
+// const tracks = [
+//     { title: "Skyfall", duration: 180, liked: false },
+//     { title: "Bamboo Forest", duration: 320, liked: true },
+//     { title: "Euphoria", duration: 250, liked: false },
+//     { title: "Avalanche", duration: 210, liked: true }
+// ]
+
+// ТВОИ ЗАДАЧИ:
+// 1) Сделай функцию, которая показывает названия всех треков.
+// Формат вывода:
+// Трек: Skyfall
+// Трек: Bamboo Forest
+// ...
+
+// 2) Сделай функцию, которая возвращает только любимые треки.
+// (те, где liked: true)
+
+// 3) Сделай функцию, которая принимает название трека и выводит его длительность в секундах.
+// Если трека нет — выводи сообщение:
+// Такого трека нет.
+
+// 4) Сделай функцию, которая создаёт новый массив, состоящий только из длительностей всех треков.
+// Результат должен быть такого вида:
+// [180, 320, 250, 210]
+
+// const tracks = [
+//     { title: "Skyfall", duration: 180, liked: false },
+//     { title: "Bamboo Forest", duration: 320, liked: true },
+//     { title: "Euphoria", duration: 250, liked: false },
+//     { title: "Avalanche", duration: 210, liked: true }
+// ]
+
+// const showAllTitle = ()=>{
+//     tracks.forEach(t => {
+//         console.log(`Track: ${t.title}`)
+//     })
+// }
+// showAllTitle()
+
+// const showFavTracks = () => {
+//     const filteredTracks = tracks.filter(tr => tr.liked)
+//     console.log(filteredTracks)
+// }
+// showFavTracks()
+
+// const showDuration = (title) => {
+//     const findedTrack = tracks.find(tr => tr.title === title)
+//     if(findedTrack) {
+//         console.log(`Duration of ${title}: ${findedTrack.duration}`)
+//     }else{
+//         console.log('Такого трека нет')
+//     }
+// }
+
+// showDuration('Skyfall')
+
+// 4) Сделай функцию, которая создаёт новый массив, состоящий только из длительностей всех треков.
+// Результат должен быть такого вида:
+// [180, 320, 250, 210]
+
+// const allDuration = () => {
+//     const allDurationArr = tracks.map(tr => tr.duration)
+//     console.log(allDurationArr)
+// }
+// allDuration()
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА — «Портфель студентов»
+// Есть массив:
+// const students = [
+//     { name: "Илья", age: 20, grades: [5, 4, 5], isActive: true },
+//     { name: "Аня", age: 19, grades: [4, 4, 5], isActive: false },
+//     { name: "Петя", age: 21, grades: [3, 4, 2], isActive: true },
+//     { name: "Саша", age: 22, grades: [5, 5, 5], isActive: true }
+// ]
+
+// ТВОИ ЗАДАЧИ:
+// 1) Сделать функцию, которая выводит имена всех активных студентов, которые старше 20 лет.
+
+// 2) Сделать функцию, которая создаёт новый массив объектов с полями:
+// { name: "Имя", averageGrade: среднее_значение_оценок }
+
+// 3) Сделать функцию, которая ищет студента по имени и выводит его среднюю оценку.
+// Если такого нет — вывести сообщение.
+
+// 4) Сделать функцию, которая выводит только студентов со средней оценкой >= 4.5, в формате:
+// Имя: Саша — средняя оценка: 5
+
+const students = [
+    { name: "Илья", age: 20, grades: [5, 4, 5], isActive: true },
+    { name: "Аня", age: 19, grades: [4, 4, 5], isActive: false },
+    { name: "Петя", age: 21, grades: [3, 4, 2], isActive: true },
+    { name: "Саша", age: 22, grades: [5, 5, 5], isActive: true }
+]
+
+
+// const OldActive = () => {
+//     const isActive = students.filter(aStud => aStud.isActive)
+//     const isOlder = isActive.filter(oStud => oStud.age > 20)
+//     isOlder.forEach(stud => console.log(stud.name))
+// }
+// OldActive()
+
+// 2) Сделать функцию, которая создаёт новый массив объектов с полями:
+// { name: "Имя", averageGrade: среднее_значение_оценок }
