@@ -747,12 +747,26 @@ const students = [
 ]
 
 
-// const OldActive = () => {
-//     const isActive = students.filter(aStud => aStud.isActive)
-//     const isOlder = isActive.filter(oStud => oStud.age > 20)
-//     isOlder.forEach(stud => console.log(stud.name))
-// }
-// OldActive()
+const OldActive = () => {
+    const isActive = students.filter(aStud => aStud.isActive)
+    const isOlder = isActive.filter(oStud => oStud.age > 20)
+    isOlder.forEach(stud => console.log(stud.name))
+}
+OldActive()
 
-// 2) Сделать функцию, которая создаёт новый массив объектов с полями:
-// { name: "Имя", averageGrade: среднее_значение_оценок }
+const studentsGrade = () => {
+    const newStudents = students.map(stud => {
+        let sum = 0
+        stud.grades.forEach(grade => {
+            sum += grade /* sum = sum + grade */
+        })
+        const average = sum / stud.grades.length
+        return {
+            name: stud.name,
+            averageGrade: average
+        }
+    })
+    console.log(newStudents)
+}
+
+studentsGrade()
