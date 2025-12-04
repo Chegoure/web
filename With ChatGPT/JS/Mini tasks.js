@@ -739,34 +739,78 @@
 // 4) Сделать функцию, которая выводит только студентов со средней оценкой >= 4.5, в формате:
 // Имя: Саша — средняя оценка: 5
 
-const students = [
-    { name: "Илья", age: 20, grades: [5, 4, 5], isActive: true },
-    { name: "Аня", age: 19, grades: [4, 4, 5], isActive: false },
-    { name: "Петя", age: 21, grades: [3, 4, 2], isActive: true },
-    { name: "Саша", age: 22, grades: [5, 5, 5], isActive: true }
+// const students = [
+//     { name: "Илья", age: 20, grades: [5, 4, 5], isActive: true },
+//     { name: "Аня", age: 19, grades: [4, 4, 5], isActive: false },
+//     { name: "Петя", age: 21, grades: [3, 4, 2], isActive: true },
+//     { name: "Саша", age: 22, grades: [5, 5, 5], isActive: true }
+// ]
+
+
+// const OldActive = () => {
+//     const isActive = students.filter(aStud => aStud.isActive)
+//     const isOlder = isActive.filter(oStud => oStud.age > 20)
+//     isOlder.forEach(stud => console.log(stud.name))
+// }
+// OldActive()
+
+// const studentsGrade = () => {
+//     const newStudents = students.map(stud => {
+//         let sum = 0
+//         stud.grades.forEach(grade => {
+//             sum += grade /* sum = sum + grade */
+//         })
+//         const average = sum / stud.grades.length
+//         return {
+//             name: stud.name,
+//             averageGrade: average
+//         }
+//     })
+//     console.log(newStudents)
+// }
+
+// studentsGrade()
+
+
+// ___________________________________________________________________________
+
+// Практика №3 — «Музыкальный плейлист»
+// Есть массив треков:
+const playlist = [
+    { title: "Skyfall", duration: 180, liked: false, artist: "Adele" },
+    { title: "Bamboo Forest", duration: 320, liked: true, artist: "Nujabes" },
+    { title: "Euphoria", duration: 250, liked: false, artist: "RL Grime" },
+    { title: "Avalanche", duration: 210, liked: true, artist: "Nujabes" },
+    { title: "Ocean Whisper", duration: 145, liked: true, artist: "Bonobo" }
 ]
 
+// Задание
+// Сделай функцию getArtistStats, которая создаёт новый массив статистики по артистам.
+// Для каждого артиста нужно вернуть объект:
+// {
+//    artist: "Nujabes",
+//    tracks: 2,
+//    likedTracks: 1
+// }
 
-const OldActive = () => {
-    const isActive = students.filter(aStud => aStud.isActive)
-    const isOlder = isActive.filter(oStud => oStud.age > 20)
-    isOlder.forEach(stud => console.log(stud.name))
-}
-OldActive()
-
-const studentsGrade = () => {
-    const newStudents = students.map(stud => {
-        let sum = 0
-        stud.grades.forEach(grade => {
-            sum += grade /* sum = sum + grade */
-        })
-        const average = sum / stud.grades.length
-        return {
-            name: stud.name,
-            averageGrade: average
+const getArtistStats = () => {
+    const uniqueArtists = []
+    playlist.forEach(track => {
+        const exists = uniqueArtists.find(a => a === track.artist)
+        if(!exists) {
+            uniqueArtists.push(track.artist)
         }
     })
-    console.log(newStudents)
+    const result = uniqueArtists.map(artist => {
+        const allTracks = playlist.filter(t => t.artist === artist)
+        const likedTracks = allTracks.filter(t => t.liked)
+        return {
+            artist: artist,
+            tracks: allTracks.length,
+            likedTracks: likedTracks.length
+        }
+    })
+    console.log(result)
 }
 
-studentsGrade()
+getArtistStats()
