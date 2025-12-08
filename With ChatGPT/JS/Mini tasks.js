@@ -776,13 +776,13 @@
 
 // Практика №3 — «Музыкальный плейлист»
 // Есть массив треков:
-const playlist = [
-    { title: "Skyfall", duration: 180, liked: false, artist: "Adele" },
-    { title: "Bamboo Forest", duration: 320, liked: true, artist: "Nujabes" },
-    { title: "Euphoria", duration: 250, liked: false, artist: "RL Grime" },
-    { title: "Avalanche", duration: 210, liked: true, artist: "Nujabes" },
-    { title: "Ocean Whisper", duration: 145, liked: true, artist: "Bonobo" }
-]
+// const playlist = [
+//     { title: "Skyfall", duration: 180, liked: false, artist: "Adele" },
+//     { title: "Bamboo Forest", duration: 320, liked: true, artist: "Nujabes" },
+//     { title: "Euphoria", duration: 250, liked: false, artist: "RL Grime" },
+//     { title: "Avalanche", duration: 210, liked: true, artist: "Nujabes" },
+//     { title: "Ocean Whisper", duration: 145, liked: true, artist: "Bonobo" }
+// ]
 
 // Задание
 // Сделай функцию getArtistStats, которая создаёт новый массив статистики по артистам.
@@ -793,24 +793,154 @@ const playlist = [
 //    likedTracks: 1
 // }
 
-const getArtistStats = () => {
-    const uniqueArtists = []
-    playlist.forEach(track => {
-        const exists = uniqueArtists.find(a => a === track.artist)
-        if(!exists) {
-            uniqueArtists.push(track.artist)
-        }
-    })
-    const result = uniqueArtists.map(artist => {
-        const allTracks = playlist.filter(t => t.artist === artist)
-        const likedTracks = allTracks.filter(t => t.liked)
-        return {
-            artist: artist,
-            tracks: allTracks.length,
-            likedTracks: likedTracks.length
-        }
-    })
-    console.log(result)
-}
+// const getArtistStats = () => {
+//     const uniqueArtists = []
+//     playlist.forEach(track => {
+//         const exists = uniqueArtists.find(a => a === track.artist)
+//         if(!exists) {
+//             uniqueArtists.push(track.artist)
+//         }
+//     })
+//     const result = uniqueArtists.map(artist => {
+//         const allTracks = playlist.filter(t => t.artist === artist)
+//         const likedTracks = allTracks.filter(t => t.liked)
+//         return {
+//             artist: artist,
+//             tracks: allTracks.length,
+//             likedTracks: likedTracks.length
+//         }
+//     })
+//     console.log(result)
+// }
 
-getArtistStats()
+// getArtistStats()
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА 1 (простая)
+// У тебя есть массив объектов:
+
+// const books = [
+//     { title: "Dune", pages: 412, read: true },
+//     { title: "1984", pages: 328, read: false },
+//     { title: "Brave New World", pages: 268, read: true }
+// ]
+
+// // Сделай функцию showTitles, которая просто выводит названия всех книг.
+// // Ожидаемый вывод:
+
+// // Dune
+// // 1984
+// // Brave New World
+
+// // const showTitles = () => {
+// //     books.forEach(book => {
+// //         console.log(book.title)
+// //     })
+// // }
+
+// // showTitles()
+// // --------------------------
+
+// // 🔥 ЗАДАЧА 2 (чуть сложнее)
+// // Сделай функцию getUnread, которая вернёт новый массив, где только книги, где read: false.
+// // Ожидаемый вывод:
+// // [{ title: "1984", pages: 328, read: false }]
+
+// // const getUnread = () => {
+// //     const filter = books.filter(b => !b.read)
+// //     console.log(filter)
+// // }
+// // getUnread()
+
+// // --------------------------
+
+
+// // ЗАДАЧА 3 (средняя)
+// // Сделай функцию findBook, которая принимает title и:
+// // если книга есть — выводит: "Нашёл книгу: Dune"
+// // если нет — "Такой книги нет"
+
+// // const findBook = (title) => {
+// //     const found = books.find(b => b.title === title)
+// //     if(found){
+// //         console.log(`Нашел книгу: ${title}`)
+// //     }else{console.log('Такой книги нет')}
+        
+
+// // }
+// // findBook('Dune')
+
+// // --------------------------
+
+// const getPagesList = () => {
+//     const hz = books.map(b => b.pages)
+//     console.log(hz)
+// }
+
+// getPagesList()
+
+
+// // ЗАДАЧА 4 (версия посложнее, но без жести)
+// // Сделай функцию getPagesList, которая создаёт новый массив, состоящий только из количества страниц
+
+// const getPagesList = () => {
+//     const hz = books.map(b => b.pages)
+//     console.log(hz)
+// }
+
+// getPagesList()
+
+// ___________________________________________________________________________
+
+// //  ЗАДАЧА: Работа с массивом объектов (без жести)
+// // У тебя есть массив:
+
+// const movies = [
+//     { title: "Interstellar", rating: 9, watched: true },
+//     { title: "Avatar", rating: 7, watched: false },
+//     { title: "Shrek", rating: 10, watched: true },
+//     { title: "Inception", rating: 8, watched: false }
+// ]
+// // ❗️Сделай 3 функции:
+// // 1) showWatched()
+// // Вывести в консоль только фильмы, где watched: true.
+// // Вывод должен быть только названия фильмов.
+
+// // const showWatched = () => {
+// //     const watchedMovies = movies.filter(m => m.watched)
+// //     watchedMovies.forEach(wm => console.log(wm.title))
+// // }
+// // showWatched()
+
+// // --------------------------
+
+// // 2) getHighRated()
+// // Создать новый массив, где только фильмы с рейтингом 8 или выше.
+// // Вернуть новый массив (или вывести — как хочешь).
+
+// // const getHighRated = () => {
+// //     const isHighReated = movies.filter(m => m.rating >= 8)
+// //     const highRatedMoviesTitles = isHighReated.map(hrm => hrm.title)
+// //     console.log(highRatedMoviesTitles)
+// // }
+// // getHighRated()
+
+// // --------------------------
+
+// // 3) findMovie(title)
+// // Принимает название фильма.
+// // Если фильм найден — выводишь:
+// // Нашёл фильм: Interstellar
+// // Если нет — выводишь:
+// // Фильм не найден
+
+// // const findMovie = (title) => {
+// //     const findedMovie = movies.find(m => m.title === title)
+// //     if(findedMovie) {
+// //         console.log(`Нашёл фильм: ${title}`)
+// //     }else{
+// //         console.log('Фильм не найден')
+// //     }
+// // }
+// // findMovie("Interstellar")
