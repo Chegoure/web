@@ -944,3 +944,121 @@
 // //     }
 // // }
 // // findMovie("Interstellar")
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА 1 — совсем лёгкая
+// Есть массив:
+// const numbers = [2, 5, 8, 3, 10];
+// Задание:
+// Выведи в консоль каждое число, умноженное на 2.
+
+// const multipTwo = () => {
+//     const multipled = numbers.map(n => n*2)
+//     console.log(multipled)
+// }
+// multipTwo()
+
+// ЗАДАЧА 2 — чуть подумать
+// const users = [
+//     { name: "Илья", age: 30 },
+//     { name: "Петя", age: 17 },
+//     { name: "Аня", age: 22 },
+//     { name: "Глеб", age: 16 }
+// ];
+// Задание:
+// Вывести в консоль имена пользователей, которым 18 лет и больше.
+
+// const showOlder = () => {
+//     const older = users.filter(u => u.age >= 18)
+//     console.log(older)
+// }
+// showOlder()
+
+// ЗАДАЧА 3 — средняя
+// const books = [
+//     { title: "Dune", pages: 412 },
+//     { title: "1984", pages: 328 },
+//     { title: "Brave New World", pages: 268 }
+// ];
+// Задание:
+// Создай новый массив, состоящий только из названий книг.
+// Ожидаемый результат:
+// ["Dune", "1984", "Brave New World"]
+
+// const showTitle = () => {
+//     const titleArr = books.map(b => b.title)
+//     console.log(titleArr)
+// }
+// showTitle()
+
+// ЗАДАЧА 4 — посложнее, но без жести
+// const movies = [
+//     { title: "Interstellar", rating: 9, watched: true },
+//     { title: "Avatar", rating: 7, watched: false },
+//     { title: "Shrek", rating: 10, watched: true },
+//     { title: "Inception", rating: 8, watched: false }
+// ];
+// Задание:
+// Сделай функцию getWatchedTitles, которая:
+// берёт только просмотренные фильмы
+// возвращает массив их названий
+// Ожидаемый результат:
+// ["Interstellar", "Shrek"]
+
+// const getWatchedTitles = () => {
+//     const watchedMovies = movies.filter(m => m.watched)
+//     const titleArr = watchedMovies.map(wm => wm.title)
+//     console.log(titleArr) 
+// }
+// getWatchedTitles()
+
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА — вложенные массивы
+// У тебя есть массив пользователей.
+// У каждого пользователя есть массив заказов.
+
+const users = [
+    {
+        name: "Илья",
+        orders: [
+            { id: 1, price: 1200 },
+            { id: 2, price: 800 }
+        ]
+    },
+    {
+        name: "Петя",
+        orders: [
+            { id: 3, price: 400 }
+        ]
+    },
+    {
+        name: "Аня",
+        orders: []
+    }
+]
+
+// Задание
+// Сделай функцию getUsersWithOrders, которая:
+// Берёт только тех пользователей, у кого есть заказы
+// Для каждого такого пользователя создаёт объект вида:
+// {
+//     name: "Илья",
+//     ordersCount: 2
+// }
+// Возвращает новый массив
+
+// Ожидаемый результат:
+// [
+//     { name: "Илья", ordersCount: 2 },
+//     { name: "Петя", ordersCount: 1 }
+// ]
+
+// Найти пользователей с заказами
+
+const getUsersWithOrders = () => {
+
+}
+getUsersWithOrders()
