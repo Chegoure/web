@@ -1,6 +1,6 @@
 <script setup>
   import {ref} from "vue";
-  import myFirstComponent from "./components/myFirstComponent.vue"
+  import BurgerList from "./components/burgerList.vue";
 
   const count = ref(1)
 </script>
@@ -8,7 +8,7 @@
 <template>
   <div>
     <h1 @click="count++">hi world {{count}}</h1>
-    <myFirstComponent></myFirstComponent>
+    <burger-list></burger-list>
   </div>
 </template>
 

@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /*color-scheme: light dark;*/
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -35,6 +35,34 @@ h1 {
   line-height: 1.1;
 }
 
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -47,22 +75,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #dc271d;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
@@ -76,4 +93,149 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+/* Общие настройки */
+:root {
+  --radius: 12px;
+  --border: 1px solid hsl(240, 5%, 90%);
+  --background: #ffffff;
+  --card: #ffffff;
+  --foreground: #1a1a1a;
+  --muted: #f1f1f3;
+  --primary: #f3a96b;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+#avatar-preview {
+  width: 150px;
+  height: 200px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: var(--foreground);
+  line-height: 1.5;
+  padding: 32px 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+/* Карточка */
+.card {
+  background: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+/* Сетка */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* Форма */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius);
+  font-size: 15px;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #0757b7;
+}
+
+/* Список пользователей */
+.user-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: var(--border);
+}
+
+.user-item:last-child {
+  border-bottom: none;
+}
+
+.user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 24px;
+}
+
+.user-info h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.user-info p {
+  font-size: 14px;
+  color: #555;
+  margin: 2px 0;
+}
+
+.section-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
 }
