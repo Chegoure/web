@@ -1370,18 +1370,18 @@
 // Задачка для тренировки reduce с объектом:
 // У тебя есть массив фруктов:
 
-const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+// const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
 
-const count = fruits.reduce((acc, fruit) => {
-    if (acc[fruit]) {
-        acc[fruit] += 1
-    } else {
-        acc[fruit] = 1
-    }
-    return acc
-}, {})
+// const count = fruits.reduce((acc, fruit) => {
+//     if (acc[fruit]) {
+//         acc[fruit] += 1
+//     } else {
+//         acc[fruit] = 1
+//     }
+//     return acc
+// }, {})
 
-console.log(count)
+// console.log(count)
 
 // Задание:
 // Создать объект, где ключ — это название фрукта, а значение — сколько раз он встречается в массиве.
@@ -1393,6 +1393,24 @@ console.log(count)
 //   orange: 1
 // }
 
+// ___________________________________________________________________________
 
+// Мини-задача (очень типовая)
+// HTML
 
+// <button id="inc">+</button>
+// <span id="count">0</span>
+
+// Задание:
+// При клике на кнопку увеличивать число на 1
+
+// const btn = document.querySelector('#inc')
+// const countEl = document.querySelector('#count')
+// let count = 0
+
+// btn.addEventListener('click', () => {
+//     countEl.textContent = count += 1
+// })
+
+// ___________________________________________________________________________
 
