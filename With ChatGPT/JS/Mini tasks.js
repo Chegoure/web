@@ -1414,3 +1414,66 @@
 
 // ___________________________________________________________________________
 
+// HTML:
+// <button id="btn1">-1</button>
+// <button id="btn2">+1</button>
+// <p id="counter"></p>
+
+// const btn1El = document.querySelector('#btn1')
+// const btn2El = document.querySelector('#btn2')
+// const counterEl = document.querySelector('#counter')
+
+// let count = 0
+
+// const render = () => {
+//   counterEl.textContent = count
+//   btn1El.disabled = count === 0
+// }
+
+// btn1El.addEventListener('click', () => {
+//   if (count > 0) {
+//     count -= 1
+//   }  
+//   render()
+// })
+
+// btn2El.addEventListener('click', () => {
+//   count += 1
+//   render()
+// })
+
+// render()
+
+
+// ___________________________________________________________________________
+
+// <input id="nameInput" placeholder="Ваш месседж">
+// <p id="output"></p>
+
+
+// const inputEl = document.querySelector('#nameInput')
+// const outputEl = document.querySelector('#output')
+
+// let message = ''
+
+// const render = () => {
+//     if(message === '') {
+//         outputEl.textContent = 'Пока пусто'
+//     } else {
+//         outputEl.textContent = message
+//     }   
+// }
+
+// inputEl.addEventListener('input', () => {
+//   message = inputEl.value
+//   render()
+// })
+
+// render()
+
+
+// 🔥 ТВОЁ ЗАДАНИЕ (ОЧЕНЬ ВАЖНО)
+// Ничего не усложняя, сделай сам:
+// 1️⃣ Переименуй name в message
+// 2️⃣ Поменяй placeholder на любой
+// 3️⃣ Сделай, чтобы если input пустой — <p> был пустым
