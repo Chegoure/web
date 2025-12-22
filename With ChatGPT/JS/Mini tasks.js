@@ -1349,3 +1349,50 @@
 // }
 // getWatchedCount()
 
+// ___________________________________________________________________________
+// Пример с подсчётом слов:
+// const words = ["apple", "banana", "apple", "orange", "banana"];
+
+// const count = words.reduce((acc, word) => {
+//     if (acc[word]) {       // тут "word" — это переменная, текущий элемент массива
+//         acc[word] += 1;
+//     } else {
+//         acc[word] = 1;
+//     }
+//     return acc;
+// }, {});
+
+// console.log(count);
+// { apple: 2, banana: 2, orange: 1 }
+
+// ___________________________________________________________________________
+
+// Задачка для тренировки reduce с объектом:
+// У тебя есть массив фруктов:
+
+const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+
+const count = fruits.reduce((acc, fruit) => {
+    if (acc[fruit]) {
+        acc[fruit] += 1
+    } else {
+        acc[fruit] = 1
+    }
+    return acc
+}, {})
+
+console.log(count)
+
+// Задание:
+// Создать объект, где ключ — это название фрукта, а значение — сколько раз он встречается в массиве.
+
+// Ожидаемый результат:
+// {
+//   apple: 3,
+//   banana: 2,
+//   orange: 1
+// }
+
+
+
+
