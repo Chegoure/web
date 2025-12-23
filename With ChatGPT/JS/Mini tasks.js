@@ -1020,25 +1020,25 @@
 // У тебя есть массив пользователей.
 // У каждого пользователя есть массив заказов.
 
-const users = [
-    {
-        name: "Илья",
-        orders: [
-            { id: 1, price: 1200 },
-            { id: 2, price: 800 }
-        ]
-    },
-    {
-        name: "Петя",
-        orders: [
-            { id: 3, price: 400 }
-        ]
-    },
-    {
-        name: "Аня",
-        orders: []
-    }
-]
+// const users = [
+//     {
+//         name: "Илья",
+//         orders: [
+//             { id: 1, price: 1200 },
+//             { id: 2, price: 800 }
+//         ]
+//     },
+//     {
+//         name: "Петя",
+//         orders: [
+//             { id: 3, price: 400 }
+//         ]
+//     },
+//     {
+//         name: "Аня",
+//         orders: []
+//     }
+// ]
 
 // Задание
 // Сделай функцию getUsersWithOrders, которая:
@@ -1058,7 +1058,422 @@ const users = [
 
 // Найти пользователей с заказами
 
-const getUsersWithOrders = () => {
+// const getUsersWithOrders = () => {
 
-}
-getUsersWithOrders()
+// }
+// getUsersWithOrders()
+
+// ___________________________________________________________________________
+
+// Разминка (очень простая)
+// Есть массив:
+// const numbers = [1, 4, 7, 10, 13]
+// Задание:
+// Оставь только числа больше 5
+// Из них сделай новый массив, где каждое число умножено на 2
+// Ожидаемый результат:
+// [14, 20, 26]
+
+// const showbiggerThanFive = () => {
+//     const biggerThanFive = numbers.filter(n => n > 5)
+//     const multipled = biggerThanFive.map(n => n*2)
+//     console.log(multipled)
+// }
+// showbiggerThanFive()
+
+// ___________________________________________________________________________
+
+// Следующее задание (уровень +½)
+// const users = [
+//     { name: "Илья", age: 30, active: true },
+//     { name: "Петя", age: 17, active: false },
+//     { name: "Аня", age: 22, active: true },
+//     { name: "Глеб", age: 16, active: true }
+// ]
+// Задание:
+// Оставь только активных пользователей
+// Из них оставь только тех, кому 18 и больше
+// Верни массив только с именами
+// Ожидаемый результат:
+// ["Илья", "Аня"]
+
+// const showNames = () => {
+//     const isActive = users.filter(u => u.active)
+//     const oldest = isActive.filter(u => u.age >= 18)
+//     const onlyNames = oldest.map(u => u.name)
+//     console.log(onlyNames)
+// }
+// showNames()
+
+// ___________________________________________________________________________
+
+// ЗАДАЧА (рабочая, не учебная)
+// Есть массив заказов:
+
+// const users = [
+//     {
+//         name: "Илья",
+//         age: 30,
+//         orders: [
+//             { title: "Кофе", price: 300 },
+//             { title: "Сэндвич", price: 450 }
+//         ]
+//     },
+//     {
+//         name: "Петя",
+//         age: 17,
+//         orders: []
+//     },
+//     {
+//         name: "Аня",
+//         age: 22,
+//         orders: [
+//             { title: "Чай", price: 200 }
+//         ]
+//     }
+// ]
+
+// Задание (БЕЗ подсказок по методам)
+// Сделай функцию getAdultCustomers, которая:
+// 1️⃣ Берёт только пользователей 18+
+// 2️⃣ Оставляет только тех, у кого есть заказы
+// 3️⃣ Возвращает новый массив объектов такого вида:
+// [
+//   { name: "Илья", ordersCount: 2 },
+//   { name: "Аня", ordersCount: 1 }
+// ]
+
+// const getAdultCustomers = () => {
+//     const olderUsers = users.filter(u => u.age >= 18)
+//     const withOrders = olderUsers.filter(u => u.orders.length > 0)
+//     const updUsers = withOrders.map(u => {
+//         return {
+//             name: u.name,
+//             ordersCount: u.orders.length
+//         }
+//     })
+//     return updUsers
+// }
+// const result = getAdultCustomers()
+// console.log(result)
+
+// ___________________________________________________________________________
+
+// const sum = numbers.reduce((acc, n) => {
+//     return acc + n
+// }, 0)
+
+// console.log(sum)
+// ЗАДАНИЕ
+// const prices = [300, 450, 200]
+// Задание:
+// С помощью reduce получи общую сумму.
+
+// const sum = prices.reduce((acc, n) => {
+//     return acc + n
+// }, 0)
+
+// ___________________________________________________________________________
+
+// reduce с объектами (простой)
+// Есть массив товаров:
+
+// const products = [
+//     { title: "Кофе", price: 300 },
+//     { title: "Чай", price: 200 },
+//     { title: "Сэндвич", price: 450 }
+// ];
+
+// ❓ Задача
+// Посчитать общую сумму всех товаров с помощью reduce.
+
+// const sum = products.reduce((acc, n) => {
+//     acc + n.price
+// }, 0)
+// console.log(sum)
+
+// ___________________________________________________________________________
+
+// ТЕСТ 2 — reduce + вложенные массивы
+// У тебя есть массив пользователей с заказами:
+
+// const users = [
+//     { name: "Илья", orders: [ { title: "Кофе", price: 300 }, { title: "Сэндвич", price: 450 } ] },
+//     { name: "Петя", orders: [] },
+//     { name: "Аня", orders: [ { title: "Чай", price: 200 } ] }
+// ]
+
+// Задание:
+// Сделать функцию getTotalOrdersPrice(users), которая:
+// Проходит по каждому пользователю.
+// Для каждого пользователя суммирует цены его заказов.
+// Возвращает общую сумму всех заказов всех пользователей.
+// Ожидаемый результат:
+// 950
+
+// const getTotalOrdersPrice = () => {
+//     return users.reduce((acc, user) => {
+//         const userTotal = user.orders.reduce((sum, product) => {
+//             return sum + product.price
+//         }, 0)
+//         return acc + userTotal
+//     }, 0)
+// }
+
+// getTotalOrdersPrice()
+
+// Окей, вот задача в том же духе:
+
+// const carts = [
+//     {
+//         owner: "Илья",
+//         items: [
+//             { name: "Laptop", price: 1200 },
+//             { name: "Mouse", price: 50 }
+//         ]
+//     },
+//     {
+//         owner: "Аня",
+//         items: [
+//             { name: "Notebook", price: 15 },
+//             { name: "Pen", price: 5 },
+//             { name: "Backpack", price: 40 }
+//         ]
+//     },
+//     {
+//         owner: "Петя",
+//         items: []
+//     }
+// ];
+
+// Сделай функцию getTotalCartPrice, которая вернёт сумму цен всех товаров во всех корзинах.
+
+// const getTotalCartPrice = () => 
+//    carts.reduce((acc, own) => acc + own.items.reduce((sum, item) => sum + item.price, 0), 0)
+// console.log(getTotalCartPrice())
+
+// ___________________________________________________________________________
+
+// const prices = [100, 250, 400]
+// Задание:
+// Посчитать общую сумму
+
+// const sum = prices.reduce((acc, n) => {
+//     return acc + n
+// }, 0)
+
+// console.log(sum)
+
+// ===============================
+// ЗАДАНИЕ 2 — чуть интереснее
+// const products = [
+//   { title: "Кофе", price: 300 },
+//   { title: "Чай", price: 200 },
+//   { title: "Сэндвич", price: 450 }
+// ]
+
+// Задание:
+// Посчитать общую стоимость всех товаров
+
+// const sum = products.reduce((acc, p) => {
+//     return acc + p.price
+// }, 0)
+
+// console.log(sum)
+
+
+
+// ЗАДАЧА (reduce, уровень — ты вывезешь)
+// Есть массив заказов:
+
+// const orders = [
+//     { id: 1, price: 300, delivered: true },
+//     { id: 2, price: 450, delivered: false },
+//     { id: 3, price: 200, delivered: true },
+//     { id: 4, price: 150, delivered: true }
+// ]
+// ❗️Задание
+// Сделай функцию getDeliveredTotal, которая:
+// Берёт только доставленные заказы (delivered: true)
+// Считает общую сумму их price
+// Возвращает число
+// 650
+
+// const getDeliveredTotal = () => {
+//     const DeliveredTotal = orders
+//         .filter(o => o.delivered)
+//         .reduce((acc, o) => {
+//             return acc + o.price
+//         }, 0)
+//     console.log(DeliveredTotal)
+// }
+// getDeliveredTotal()
+
+// or
+
+// const getDeliveredTotal = () => {
+//     const total = orders.reduce((acc, order) => {
+//         if (order.delivered) {
+//             return acc + order.price
+//         }
+//         return acc
+//     }, 0)
+
+//     console.log(total)
+// }
+
+// getDeliveredTotal()
+
+// ___________________________________________________________________________
+
+// НОВАЯ ЗАДАЧА (ТОЛЬКО REDUCE)
+// const movies = [
+//     { title: "Interstellar", rating: 9, watched: true },
+//     { title: "Avatar", rating: 7, watched: false },
+//     { title: "Shrek", rating: 10, watched: true },
+//     { title: "Inception", rating: 8, watched: false }
+// ]
+// ❗️Задание
+// Сделай функцию getWatchedCount, которая:
+// Считает сколько фильмов просмотрено
+// Использует ТОЛЬКО reduce
+// Возвращает число
+// ✅ Ожидаемый результат:
+// 2
+
+// const getWatchedCount = () => {
+//     const watchedCount = movies.reduce((acc, m) => {
+//         return m.watched ? acc + 1 : acc
+//     }, 0)
+//     console.log(watchedCount)
+// }
+// getWatchedCount()
+
+// ___________________________________________________________________________
+// Пример с подсчётом слов:
+// const words = ["apple", "banana", "apple", "orange", "banana"];
+
+// const count = words.reduce((acc, word) => {
+//     if (acc[word]) {       // тут "word" — это переменная, текущий элемент массива
+//         acc[word] += 1;
+//     } else {
+//         acc[word] = 1;
+//     }
+//     return acc;
+// }, {});
+
+// console.log(count);
+// { apple: 2, banana: 2, orange: 1 }
+
+// ___________________________________________________________________________
+
+// Задачка для тренировки reduce с объектом:
+// У тебя есть массив фруктов:
+
+// const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+
+// const count = fruits.reduce((acc, fruit) => {
+//     if (acc[fruit]) {
+//         acc[fruit] += 1
+//     } else {
+//         acc[fruit] = 1
+//     }
+//     return acc
+// }, {})
+
+// console.log(count)
+
+// Задание:
+// Создать объект, где ключ — это название фрукта, а значение — сколько раз он встречается в массиве.
+
+// Ожидаемый результат:
+// {
+//   apple: 3,
+//   banana: 2,
+//   orange: 1
+// }
+
+// ___________________________________________________________________________
+
+// Мини-задача (очень типовая)
+// HTML
+
+// <button id="inc">+</button>
+// <span id="count">0</span>
+
+// Задание:
+// При клике на кнопку увеличивать число на 1
+
+// const btn = document.querySelector('#inc')
+// const countEl = document.querySelector('#count')
+// let count = 0
+
+// btn.addEventListener('click', () => {
+//     countEl.textContent = count += 1
+// })
+
+// ___________________________________________________________________________
+
+// HTML:
+// <button id="btn1">-1</button>
+// <button id="btn2">+1</button>
+// <p id="counter"></p>
+
+// const btn1El = document.querySelector('#btn1')
+// const btn2El = document.querySelector('#btn2')
+// const counterEl = document.querySelector('#counter')
+
+// let count = 0
+
+// const render = () => {
+//   counterEl.textContent = count
+//   btn1El.disabled = count === 0
+// }
+
+// btn1El.addEventListener('click', () => {
+//   if (count > 0) {
+//     count -= 1
+//   }  
+//   render()
+// })
+
+// btn2El.addEventListener('click', () => {
+//   count += 1
+//   render()
+// })
+
+// render()
+
+
+// ___________________________________________________________________________
+
+// <input id="nameInput" placeholder="Ваш месседж">
+// <p id="output"></p>
+
+
+// const inputEl = document.querySelector('#nameInput')
+// const outputEl = document.querySelector('#output')
+
+// let message = ''
+
+// const render = () => {
+//     if(message === '') {
+//         outputEl.textContent = 'Пока пусто'
+//     } else {
+//         outputEl.textContent = message
+//     }   
+// }
+
+// inputEl.addEventListener('input', () => {
+//   message = inputEl.value
+//   render()
+// })
+
+// render()
+
+
+// 🔥 ТВОЁ ЗАДАНИЕ (ОЧЕНЬ ВАЖНО)
+// Ничего не усложняя, сделай сам:
+// 1️⃣ Переименуй name в message
+// 2️⃣ Поменяй placeholder на любой
+// 3️⃣ Сделай, чтобы если input пустой — <p> был пустым
