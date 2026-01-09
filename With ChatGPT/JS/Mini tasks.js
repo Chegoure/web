@@ -1447,33 +1447,46 @@
 
 // ___________________________________________________________________________
 
-// <input id="nameInput" placeholder="Ваш месседж">
-// <p id="output"></p>
+// ЗАДАНИЕ — input (разминка)
+// HTML (представь, что оно уже есть):
 
+//Что нужно сделать
+// Написать JS-код, который:
+// Берёт значение из <input>
+// Считает количество символов
+// Показывает это число в <p></p>
 
-// const inputEl = document.querySelector('#nameInput')
-// const outputEl = document.querySelector('#output')
+// <input id="textInput">
+// <p id="length"></p>
 
-// let message = ''
+// const inputEl = document.querySelector('#textInput')
+// console.log(inputEl)
 
-// const render = () => {
-//     if(message === '') {
-//         outputEl.textContent = 'Пока пусто'
-//     } else {
-//         outputEl.textContent = message
-//     }   
-// }
+// ___________________________________________________________________________
 
-// inputEl.addEventListener('input', () => {
-//   message = inputEl.value
-//   render()
-// })
+// <input type="text" id="textInput">
+// <p id="textView"></p>
+// <p id="lengthOut"></p>
 
-// render()
+// Пользователь вводит текст в <input>
+// Под инпутом показывается длина текста (text.length)
+// Если инпут пустой — показывается "Пусто"
 
+const inputEl = document.querySelector("#textInput")
+const lengthOutEl = document.querySelector("#lengthOut")
+const textViewEl = document.querySelector("#textView")
+let text = ''
 
-// 🔥 ТВОЁ ЗАДАНИЕ (ОЧЕНЬ ВАЖНО)
-// Ничего не усложняя, сделай сам:
-// 1️⃣ Переименуй name в message
-// 2️⃣ Поменяй placeholder на любой
-// 3️⃣ Сделай, чтобы если input пустой — <p> был пустым
+const render = () => {
+    const info = text.length > 0 ? text.length : 'Пусто'
+
+    lengthOutEl.textContent = 'Кол-во символов: ' + info
+    textViewEl.textContent = `Набрано: ${text}`
+}
+
+inputEl.addEventListener('input', () => {
+    text = inputEl.value
+    render()
+})
+
+render()
