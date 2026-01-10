@@ -1472,21 +1472,80 @@
 // Под инпутом показывается длина текста (text.length)
 // Если инпут пустой — показывается "Пусто"
 
-const inputEl = document.querySelector("#textInput")
-const lengthOutEl = document.querySelector("#lengthOut")
-const textViewEl = document.querySelector("#textView")
-let text = ''
+// const inputEl = document.querySelector("#textInput")
+// const lengthOutEl = document.querySelector("#lengthOut")
+// const textViewEl = document.querySelector("#textView")
+// let text = ''
 
-const render = () => {
-    const info = text.length > 0 ? text.length : 'Пусто'
+// const render = () => {
+//     const info = text.length > 0 ? text.length : 'Пусто'
 
-    lengthOutEl.textContent = 'Кол-во символов: ' + info
-    textViewEl.textContent = `Набрано: ${text}`
-}
+//     lengthOutEl.textContent = 'Кол-во символов: ' + info
+//     textViewEl.textContent = `Набрано: ${text}`
+// }
 
-inputEl.addEventListener('input', () => {
-    text = inputEl.value
-    render()
-})
+// inputEl.addEventListener('input', () => {
+//     text = inputEl.value
+//     render()
+// })
 
-render()
+// render()
+
+// ___________________________________________________________________________
+
+// ЗАДАНИЕ 1 — индикатор длины текста
+// Условия:
+// Есть input
+// Есть <p> с сообщением
+// Правила:
+// если длина текста 0 → выводи: Введите текст
+// если длина 1–4 → Слишком коротко
+// если длина 5 и больше → Ок
+
+// <input id="textInput">
+// <p id="status"></p>
+
+// const inputEl = document.querySelector('#textInput')
+// const statusEl = document.querySelector('#status')
+
+// const render = () => {
+//     let status
+//         if (inputEl.value.length <= 0) {
+//             status = 'Пусто'
+//         } else if (inputEl.value.length >= 5) {
+//             status = 'Ок'
+//         } else {
+//             status = 'Слишком коротко'
+//         }
+//     statusEl.textContent = status
+// }
+
+// inputEl.addEventListener('input', () => {
+//     render()
+// })
+
+// render()
+
+// /================/
+
+// <input id="textInput">
+// <p id="status"></p>
+
+// const inputEl = document.querySelector('#textInput')
+// const statusEl = document.querySelector('#status')
+
+// const render = () => {
+//     const len = inputEl.value.length
+//     statusEl.textContent =
+//         len === 0 ?
+//         "Ничего не введено" :
+//         len < 10 ?
+//         "Короткий текст" :
+//         "Норм"
+// }
+
+// inputEl.addEventListener('input', () => {
+//     render()
+// })
+
+// render()
