@@ -3,7 +3,13 @@ import {ref} from "vue"
 import Columns from "./components/Columns.vue"
 
 const toDo = ref('')
-const toDoList = ref([])
+const toDoList = ref([{
+  taskName: 'Чтобы изменить заметку, введите новый текст в поле ниже, затем выберите заметку и нажмите «Изменить здесь».',
+  isDone: false
+}])
+
+const toDoEdit = ref('')
+
 
 const addTask = () => {
   toDoList.value.push({
@@ -16,22 +22,33 @@ const removeTask = (index) => {
   toDoList.value.splice(index, 1)
 }
 
+const editTask = (index) => {
+  toDoList.value.splice(index, 1, {
+    taskName: toDoEdit.value,
+    isDone: false
+  })
+}
+
 </script>
 
 <template>
   <Columns></Columns>
 <div class="container">
   <div class="inner">
-    <input v-model="toDo" type="text">
+    <input v-model="toDo" type="text" placeholder="Ваша задача">
     <button @click="addTask">+</button>
   </div>
   <ul>
     <li v-for="(task, index) in toDoList">
       {{ task.taskName }}
-      <input class="check-box" v-model="task.isDone" type="checkbox">
-      <span @click="removeTask(index)">X</span>
+      <input v-model="task.isDone" class="check-box" type="checkbox">
+      <span @click="editTask(index)" class="btn-edit">Изменить здесь</span>
+      <span @click="removeTask(index)" class="remove-task">X</span>
     </li>
   </ul>
+  <div class="edit">
+    <input v-model="toDoEdit" class="edit-input" type="text" placeholder="Текст для изменения...">
+  </div>
 </div>
 </template>
 
@@ -69,7 +86,12 @@ input {
 }
 
 input[type="checkbox"] {
-  accent-color: #1e2e2e ;
+  align-self: center;
+  accent-color: #1e2e2e;
+}
+
+.btn-edit {
+  align-self: center;
 }
 
 button {
@@ -78,9 +100,13 @@ button {
   font-weight: bold;
 }
 
-span {
-  color: #000000;
-  font-weight: bold;
+.edit {
+  padding: 24px;
+  display: flex;
+  background: #0f1115;
+  border-radius: 20px;
+  margin: 10px -24px;
+  height: 37px;
 }
 
 ul {
@@ -89,11 +115,24 @@ ul {
 }
 
 li {
-  padding-top: 10px;
+  margin-top: 10px;
   list-style: none;
   display: grid;
-  grid-template-columns: 424px 3fr 1fr;
+  grid-template-columns: 1fr auto auto auto;
   text-align: left;
-  padding-left: 10px;
+  padding: 10px;
+  gap: 10px;
+  word-break: break-word;
+  background: #161a22;
+  border-radius: 10px;
+}
+
+.remove-task {
+  font-size: 16px;
+  color: #d66;
+  font-weight: bold;
+  align-self: center;
 }
 </style>
+
+align-self: center;
