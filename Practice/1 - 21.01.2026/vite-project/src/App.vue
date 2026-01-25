@@ -10,7 +10,6 @@ const toDoList = ref([{
 
 const toDoEdit = ref('')
 
-
 const addTask = () => {
   toDoList.value.push({
     taskName: toDo.value,
@@ -134,5 +133,3 @@ li {
   align-self: center;
 }
 </style>
-
-align-self: center;
