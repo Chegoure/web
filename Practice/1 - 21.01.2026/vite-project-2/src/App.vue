@@ -1,20 +1,15 @@
 <script setup>
 import {ref} from "vue";
-const isShow = ref(false)
-const editTask = () => {
 
-}
-const showInput = () => {
-isShow.value = !isShow.value
-}
-const removeTask = (i) => {
-todoList.value.splice(i, 1)
-}
+const todo = ref('')
+const todoList = ref([])
+
 const addTask = (todo) => {
   todoList.value.push(todo)
 }
-const todo = ref('')
-const todoList = ref([])
+const removeTask = (i) => {
+  todoList.value.splice(i, 1)
+}
 </script>
 
 <template>
