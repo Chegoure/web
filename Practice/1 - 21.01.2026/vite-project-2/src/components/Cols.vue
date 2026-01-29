@@ -1,32 +1,33 @@
 <script setup>
 import {ref} from "vue";
 
-const col1 = ref(['coffee', 'beer'])
-const col2 = ref(['tea', 'soda'])
+const words1 = ref(['Roman', 'Petya'])
+const words2 = ref(['Kostya', 'Vlad'])
 
-const moveFooOne = (drink, i) => {
-  col1.value.splice(i, 1)
-  col2.value.push(drink)
+const moveWords1 = (word, i) => {
+words1.value.splice(i, 1)
+words2.value.push(word)
 }
-
-const moveFooTwo = (drink, i) => {
-  col2.value.splice(i, 1)
-  col1.value.push(drink)
+const moveWords2 = (word, i) => {
+words2.value.splice(i, 1)
+words1.value.push(word)
 }
-
 </script>
 
 <template>
 <div class="container">
   <ul>
-    <li @click="moveFooOne(drink, i)" v-for="(drink, i) in col1">{{ drink }}</li>
+    <li v-for="(word, i) in words1" @click="moveWords1(word, i)">{{ word }}</li> 
   </ul>
   <ul>
-    <li @click="moveFooTwo(drink, i)" v-for="(drink, i) in col2">{{ drink }}</li>
+    <li v-for="(word, i) in words2" @click="moveWords2(word, i)">{{ word }}</li>
   </ul>
 </div>
 </template>
 
 <style scoped>
-
+.container {
+  display: flex;
+  flex-direction: row;
+}
 </style>

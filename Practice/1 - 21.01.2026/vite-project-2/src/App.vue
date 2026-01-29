@@ -1,31 +1,35 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue"
 
-const todo = ref('')
-const todoList = ref([])
+const toDo = ref('')
+const toDoList = ref([])
 
-const addTask = (todo) => {
-  todoList.value.push(todo)
+const addToDo = () => {
+  toDoList.value.push({
+    toDoName: toDo.value,
+    isDone: false
+  })
 }
-const removeTask = (i) => {
-  todoList.value.splice(i, 1)
+
+const removeToDo = (i) => {
+toDoList.value.splice(i, 1)
 }
 </script>
 
 <template>
-<div>
-  <input v-model="todo" type="text">
-  <button @click="addTask(todo)">+</button>
+<div class="container">
+  <input v-model="toDo" type="text">
+  <button @click="addToDo">Добавить</button>
+  <ul>
+    <li v-for="(task, i) in toDoList">
+      {{ task.toDoName }}
+      <input v-model="task.isDone" type="checkbox">
+      <button @click="removeToDo(i)">удалить</button>
+    </li>
+  </ul>
 </div>
-<ul>
-  <li v-for="(task, i) in todoList">
-    {{task}}
-    <span @click="removeTask(i)">(удалить)</span>
-  </li>
-</ul>
-
 </template>
 
-<style scoped>
+<style scoped> 
 
 </style>
