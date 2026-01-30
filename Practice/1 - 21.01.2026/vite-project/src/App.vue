@@ -8,7 +8,7 @@ const toDoList = ref([{
   isDone: false
 }])
 
-const toDoEdit = ref('')
+const editIndex = ref(null)
 
 const addTask = () => {
   toDoList.value.push({
@@ -22,10 +22,11 @@ const removeTask = (index) => {
 }
 
 const editTask = (index) => {
-  toDoList.value.splice(index, 1, {
-    taskName: toDoEdit.value,
-    isDone: false
-  })
+  if(editIndex.value !== null){
+    editIndex.value = null
+  } else {
+    editIndex.value = index
+  }
 }
 
 </script>
@@ -41,13 +42,11 @@ const editTask = (index) => {
     <li v-for="(task, index) in toDoList">
       {{ task.taskName }}
       <input v-model="task.isDone" class="check-box" type="checkbox">
+      <input v-if="editIndex === index" v-model="task.taskName" type="text">
       <span @click="editTask(index)" class="btn-edit">Изменить здесь</span>
       <span @click="removeTask(index)" class="remove-task">X</span>
     </li>
   </ul>
-  <div class="edit">
-    <input v-model="toDoEdit" class="edit-input" type="text" placeholder="Текст для изменения...">
-  </div>
 </div>
 </template>
 
