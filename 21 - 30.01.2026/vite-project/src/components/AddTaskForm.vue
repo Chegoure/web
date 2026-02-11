@@ -3,8 +3,8 @@ import Button from "./Button.vue";
 import {ref, defineEmits} from "vue";
 
 const emit = defineEmits(['addTask'])
-
 const toDo = ref('')
+
 const addTask = () => {
   emit('addTask', toDo.value)
   toDo.value = ''
