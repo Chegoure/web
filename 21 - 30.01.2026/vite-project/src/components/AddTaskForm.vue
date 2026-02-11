@@ -7,6 +7,7 @@ const emit = defineEmits(['addTask'])
 const toDo = ref('')
 const addTask = () => {
   emit('addTask', toDo.value)
+  toDo.value = ''
 }
 
 </script>

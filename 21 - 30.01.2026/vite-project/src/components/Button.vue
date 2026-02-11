@@ -2,15 +2,16 @@
 import {defineProps} from "vue";
 
 defineProps({
-  text: String,
-  type: String
+  text: String, // 'Добавить задачу'
+  type: String // 'primary'
 })
-
 
 </script>
 
 <template>
-  <div class="btn" :class="type">{{ text }}</div>
+  <div class="btn" :class="type">
+    {{ text }}
+  </div>
 
 </template>
 
