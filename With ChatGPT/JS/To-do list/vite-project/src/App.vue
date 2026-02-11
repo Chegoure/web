@@ -1,10 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import TaskItem from './components/TaskItem.vue'
 
 const tasks = ref([])
 const newTask = ref('') 
 
 const addTask = () => {
+  if (!newTask.value) return
+
   tasks.value.push({
     id: Date.now(),
     name: newTask.value,
@@ -24,13 +27,17 @@ const removeTask = (id) => {
   <button @click="addTask">Добавить</button>
 
   <ul>
-    <li v-for="task in tasks" key="task.id">
-      {{ task.name }}
-      <button @click="removeTask(task.id)">❌</button>
-    </li>
+    <TaskItem
+      v-for="task in tasks"
+      :key="task.id"
+      
+      :task="task"
+      @remove="removeTask"
+    />
   </ul>
 </div>
 </template>
 
 <style scoped>
 </style>
+❌
