@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="http://localhost:3000/api/register">
+        <input name="username" type="text">
+        <input name="password" type="password">
+        <button>Готово</button>
+    </form>
+    <form method="post" action="http://localhost:3000/api/login">
+        <input name="username" type="text">
+        <input name="password" type="password">
+        <button>Готово</button>
+    </form>
+    <form method="post" action="http://localhost:3000/api/threads">
+        <input name="title" type="text">
+        <input name="content" type="text">
+        <input name="author_id" type="text">
+        <button>Готово</button>
+    </form>
+    <form method="post" action="http://localhost:3000/api/threads/1/posts">
+        <input id="content" name="content" type="text">
+        <input id="author_id" name="author_id" type="text">
+    </form>
+    <button id="btn">Готово</button>
+    <form action="http://localhost:3000/api/threads/1">
+        <button>Готово</button>
+    </form>
+
+    <script>
+        fetch("http://localhost:3000/api/threads/1")
+            .then((response) => {
+                return response.json()
+                })
+            .then((data) => {
+                console.log(data)
+            })
+
+        const contentEl = document.querySelector('#content')
+        const authorIdEl = document.querySelector('#author_id')
+        const buttonEl = document.querySelector('#btn')
+
+        let content = ''
+        let authorId = ''
+
+        contentEl.addEventListener('input', (e) => {
+            content = e.target.value
+        })
+        authorIdEl.addEventListener('input', (e) => {
+            authorId = e.target.value
+        })
+        buttonEl.addEventListener('click', () => {
+            fetch('http://localhost:3000/api/threads/1/posts', {
+                method: "POST",
+                body: JSON.stringify({
+                    content: content,
+                    author_id: authorId
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+        })
+
+
+
+    </script>
+</body>
+</html>
