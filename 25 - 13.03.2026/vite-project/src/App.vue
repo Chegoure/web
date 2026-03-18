@@ -1,17 +1,17 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import { ref } from 'vue'
 import Register from "./components/Register.vue";
 import Login from "./components/Login.vue";
 import Forum from "./components/Forum.vue";
 
-const user = ref({})
+const user = ref({id:1})
 const isLogin = ref(true)
 
 </script>
 
 <template>
   <div v-if="user.id">
-    <Forum/>
+    <Forum :id="user.id" />
     {{ user }}
   </div>
   <div v-else>
