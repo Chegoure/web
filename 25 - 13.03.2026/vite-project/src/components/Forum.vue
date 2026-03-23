@@ -2,6 +2,7 @@
 
 import {onMounted, ref} from "vue";
 import axios from "axios";
+import ThreadsCreate from './ThreadsCreate.vue';
 
 defineProps({
   id: Number
@@ -9,6 +10,7 @@ defineProps({
 
 const threads = ref([])
 const activePosts = ref([])
+const isCreate = ref(true)
 
 const getPosts = async (id) => {
   const response = await axios.get('http://localhost:3000/api/threads/' + id)
@@ -26,11 +28,14 @@ onMounted(async () => {
 </script>
 
 <template>
-<div class="container">
+<div v-if="isCreate" class="container">
   <h1 class="header--title">Форум</h1>
   <main>
     <div class="sidebar">
-      <h2 class="threads--title">Темы:</h2>
+      <div class="threads--title">
+        <h2 class="threads--title-name">Темы:</h2>
+        <button class="log-in__btn" @click="isCreate=!isCreate">Создать...</button>
+      </div>
       <ul>
         <li @click="getPosts(thread.id)" class="thread" v-for="thread in threads">{{ thread.title }}</li>
       </ul>
@@ -43,6 +48,7 @@ onMounted(async () => {
     </div>
   </main>
 </div>
+<ThreadsCreate v-else @isCreate="isCreate = !isCreate"/>
 </template>
 
 <style scoped>
@@ -103,6 +109,12 @@ main {
 }
 
 .threads--title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.threads--title-name {
   padding-bottom: 10px;
   text-align: center;
 }
@@ -122,6 +134,16 @@ main {
   border: 5px solid black;
   border-radius: 8px;
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+}
+
+.log-in__btn {
+  margin: 10px 0;
+  padding: 10px;
+  border: 5px solid black;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  background-color: #efe9db;
+  transform: translateY(-5px);
 }
 
 </style>

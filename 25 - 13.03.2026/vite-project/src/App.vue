@@ -12,8 +12,7 @@ const isLogin = ref(true)
 <template>
   <div class="container-big">
     <div v-if="user.id">
-      <Forum :id="user.id" />
-      <!-- {{ user }} -->
+      <Forum :id="user.id"/>
     </div>
     <div v-else>
 
