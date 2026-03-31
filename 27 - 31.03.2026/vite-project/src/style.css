@@ -1,0 +1,45 @@
+/* Учитываем границы и паддинги в размере элементов */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внешние отступы у всех элементов */
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+/* Улучшаем плавность прокрутки и высоту body */
+/*html {*/
+/*  color-scheme: light dark; !* поддержка темной темы *!*/
+/*}*/
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Убираем маркеры списков там, где есть класс */
+ul[class], ol[class] {
+  list-style: none;
+}
+
+/* Картинки ведут себя послушно */
+img, picture, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Убираем стандартное оформление ссылок и кнопок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
