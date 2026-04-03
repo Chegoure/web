@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import ThreadsCreate from '../components/ThreadsCreate.vue'
-import PostCreate from '../components/PostCreate.vue'
+import ThreadsCreate from './ThreadCreate.vue'
+import PostCreate from './PostCreate.vue'
 import { useToast } from 'vue-toast-notification'
 
 const user = ref(JSON.parse(localStorage.getItem('user')))

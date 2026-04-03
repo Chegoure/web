@@ -1,11 +1,30 @@
+<script setup>
+import { onMounted } from 'vue'
+import { useAppStore } from './store/app.js'
+import { storeToRefs } from 'pinia'
+
+const appStore = useAppStore()
+console.log(appStore)
+const { init } = appStore
+const { user } = storeToRefs(appStore)
+
+onMounted(() => {
+  init()
+})
+
+</script>
+
 <template>
-  <h1>Hello App!</h1>
-  <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
   <nav>
-    <RouterLink to="/"> Home</RouterLink>
-    <RouterLink to="/login"> Login</RouterLink>
-    <RouterLink to="/register"> Register</RouterLink>
-    <RouterLink to="/forum"> Forum</RouterLink>
+    <div v-if="!user.id" >
+      <RouterLink to="/login"> Login</RouterLink>
+      <RouterLink to="/register"> Register</RouterLink>
+    </div>
+    <div v-else>
+      <RouterLink to="/"> Home</RouterLink>
+      <RouterLink to="/thread-create"> Create-Thread</RouterLink>
+      <RouterLink to="/post-create"> Create-Post</RouterLink>
+    </div>
 
   </nav>
   <main>

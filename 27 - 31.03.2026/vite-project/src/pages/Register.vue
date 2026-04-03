@@ -1,21 +1,14 @@
 <script setup>
-import axios from 'axios'
-import {useToast} from 'vue-toast-notification';
 import { ref } from 'vue'
+import { useAppStore } from '../store/app.js'
 
-const $toast = useToast();
+const { register } = useAppStore()
 
 const name = ref('')
 const password = ref('')
 
-const register = async () => {
-  const response = await axios.post('http://localhost:3000/api/register', {
-    username: name.value,
-    password: password.value
-  })
-  localStorage.setItem('user', JSON.stringify(response.data))
-  console.log(response)
-  $toast.success(`${response.statusText} ${response.status} ${response.data.username}`);
+const handleRegister = async () => {
+ await register(name.value, password.value)
 }
 
 </script>
@@ -25,7 +18,7 @@ const register = async () => {
     <h1 class="header--title">Форум</h1>
     <input v-model="name" placeholder="username" type="text">
     <input v-model="password" placeholder="password" type="text">
-    <button class="registration__btn" @click="register">Зарегистрироваться</button>
+    <button class="registration__btn" @click="handleRegister">Зарегистрироваться</button>
   </div>
 </template>
 

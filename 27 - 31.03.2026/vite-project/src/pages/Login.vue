@@ -1,23 +1,16 @@
 <script setup>
-import axios from 'axios'
-import {useToast} from 'vue-toast-notification';
 import { ref } from 'vue'
+import { useAppStore } from '../store/app.js'
 
-const $toast = useToast();
+const { login } = useAppStore()
 
 const name = ref('')
 const password = ref('')
 
-const login = async () => {
-  const response = await axios.post('http://localhost:3000/api/login', {
-    username: name.value,
-    password: password.value
-  })
-  localStorage.setItem('user', JSON.stringify(response.data.user))
-  console.log(response)
-  console.log(response.data.user.id)
-  $toast.success(`Успешный вход, ${response.data.user.username}!`);
+const handleLogin = () => {
+  login(name.value, password.value)
 }
+
 
 </script>
 
@@ -27,7 +20,7 @@ const login = async () => {
     <h1 class="header--title">Форум</h1>
     <input v-model="name" placeholder="username" type="text">
     <input v-model="password" placeholder="password" type="text">
-    <button class="log-in__btn" @click="login">Войти</button>
+    <button class="log-in__btn" @click="handleLogin">Войти</button>
   </div>  
 
 
