@@ -1,21 +1,21 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import ThreadsCreate from './ThreadCreate.vue'
-import PostCreate from './PostCreate.vue'
 import { useToast } from 'vue-toast-notification'
 
-const user = ref(JSON.parse(localStorage.getItem('user')))
+import { useAppStore } from '../store/app.js'
+import { storeToRefs } from 'pinia'
+
+const { user, activeThreadId } = storeToRefs(useAppStore())
 const $toast = useToast()
 const threads = ref([])
 const activeThread = ref({})
-const isCreateThread = ref(false)
-const isCreatePost = ref(false)
 
-const getPosts = async (id) => {
+const getActiveThread = async (id) => {
   const response = await axios.get('http://localhost:3000/api/threads/' + id)
   console.log(response)
   activeThread.value = response.data
+  activeThreadId.value = id
 }
 
 const deleteThread = async (id) => {
@@ -38,38 +38,29 @@ const deletePost = async (id) => {
   activeThread.value.posts.splice(deleteIndex, 1)
 }
 
-
-const onCreateThread = (thread) => {
-  isCreateThread.value = false
-  threads.value.push(thread)
-}
-
-const onCreatePost = (post) => {
-  isCreatePost.value = false
-  activeThread.value.posts.push(post)
-}
-
 onMounted(async () => {
   const response = await axios.get('http://localhost:3000/api/threads')
   console.log(response)
   threads.value = response.data
+  if(activeThreadId.value) {
+    getActiveThread(activeThreadId.value)
+  }
+
 })
 </script>
 
 <template>
-  <div v-if="!isCreateThread && !isCreatePost" class="container">
+  <div class="container">
     <h1 class="header--title">Форум {{ user.username }}</h1>
     <main>
       <div class="sidebar">
         <div class="threads--title">
           <h2 class="threads--title-name">Темы:</h2>
-          <button @click="isCreateThread = true" class="log-in__btn">
-            Создать...
-          </button>
+          <RouterLink to="/thread-create" class="log-in__btn">Создать...</RouterLink>
         </div>
         <ul>
           <li
-            @click="getPosts(thread.id)"
+            @click="getActiveThread(thread.id)"
             class="thread"
             v-for="thread in threads"
           >
@@ -79,16 +70,12 @@ onMounted(async () => {
         </ul>
       </div>
       <div class="content">
-        <h2 class="posts--title">
-          Посты:
-          <button
-            v-if="activeThread.id"
-            @click="isCreatePost = true"
-            class="log-in__btn"
-          >
-            Создать...
-          </button>
-        </h2>
+        <div class="content--title">
+          <h2 class="posts--title">
+            Посты:
+          </h2>
+          <RouterLink v-if="activeThreadId" to="/post-create"  class="log-in__btn">Создать...</RouterLink>
+        </div>
 
         <ul>
           <li v-for="post in activeThread.posts" class="post">
@@ -102,20 +89,6 @@ onMounted(async () => {
       </div>
     </main>
   </div>
-
-  <ThreadsCreate
-    v-if="isCreateThread"
-    @onCreate="onCreateThread"
-    @back="isCreateThread = false"
-    :userId="user.id"
-  />
-  <PostCreate
-    v-if="isCreatePost"
-    @onCreate="onCreatePost"
-    @back="isCreatePost = false"
-    :threadId="activeThread.id"
-    :userId="user.id"
-  />
 </template>
 
 <style scoped>
@@ -152,6 +125,12 @@ main {
   /* background-image: url('../assets/bg.png'); */
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
+}
+
+.content--title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .thread {
@@ -204,6 +183,7 @@ main {
 }
 
 .log-in__btn {
+
   margin: 10px 0;
   padding: 10px;
   border: 5px solid black;

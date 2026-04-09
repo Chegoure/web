@@ -10,20 +10,15 @@ const password = ref('')
 const handleLogin = () => {
   login(name.value, password.value)
 }
-
-
 </script>
 
 <template>
-
   <div class="log-in__form">
     <h1 class="header--title">Форум</h1>
     <input v-model="name" placeholder="username" type="text">
     <input v-model="password" placeholder="password" type="text">
     <button class="log-in__btn" @click="handleLogin">Войти</button>
-  </div>  
-
-
+  </div>
 </template>
 
 <style scoped>
@@ -60,7 +55,7 @@ input {
   padding: 14px;
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #f4e9d3;
 }
 

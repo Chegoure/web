@@ -4,7 +4,6 @@ import { useAppStore } from './store/app.js'
 import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()
-console.log(appStore)
 const { init } = appStore
 const { user } = storeToRefs(appStore)
 

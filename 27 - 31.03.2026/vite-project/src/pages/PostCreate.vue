@@ -1,32 +1,32 @@
 <script setup>
 import axios from 'axios'
 import { useToast } from 'vue-toast-notification'
-import { ref, defineEmits, defineProps } from 'vue'
+import { ref } from 'vue'
 
+import { useAppStore } from '../store/app.js'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const $toast = useToast()
-const emit = defineEmits(['onCreate', 'back'])
-const props = defineProps({
-  threadId: Number,
-  userId: Number,
-})
-
 const content = ref('')
+const { user, activeThreadId } = storeToRefs(useAppStore())
 
 const create = async () => {
   const response = await axios.post(
-    `http://localhost:3000/api/threads/${props.threadId}/posts`,
+    `http://localhost:3000/api/threads/${activeThreadId.value}/posts`,
     {
       content: content.value,
-      author_id: props.userId,
+      author_id: user.value.id
     },
   )
   console.log(response)
-  emit('onCreate', response.data)
   $toast.success(`Пост создан, ${response.data}!`)
+  await router.push('/')
 }
 
 const back = () => {
-  emit('back')
+  router.back()
 }
 </script>
 
@@ -44,7 +44,6 @@ const back = () => {
           <textarea
             v-model="content"
             placeholder="Меня часто спрашивают: Как какать?..."
-            type="text"
           ></textarea>
         </div>
 
@@ -90,13 +89,7 @@ h2 {
 
 .threads-create__form {
   justify-content: center;
-  margin: 20px 0px;
-}
-
-.threads-create__form-inputs {
-  display: flex;
-  justify-content: center;
-  margin-top: 36px;
+  margin: 20px 0;
 }
 
 .threads-create__form-content {
@@ -109,18 +102,9 @@ h2 {
   padding: 14px;
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   font-size: 16px;
-}
-
-.threads-create__form__author-input {
-  width: 100px;
-  margin: 0 20px;
-}
-
-.threads-create__form__thread-input {
-  margin: 0 20px;
 }
 
 input {

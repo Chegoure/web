@@ -7,6 +7,7 @@ export const useAppStore = defineStore('app', () => {
 
   const $toast = useToast();
   const user = ref({})
+  const activeThreadId = ref(0)
 
   const init = () => {
     const savedUser = localStorage.getItem('user')
@@ -39,5 +40,5 @@ export const useAppStore = defineStore('app', () => {
     $toast.success(`Регистрация завершена, ${ response.data.username }`);
   }
 
-  return { user, login, register, init } // Возвращает объект хранилища.
+  return { user, activeThreadId, login, register, init } // Возвращает объект хранилища.
 })
