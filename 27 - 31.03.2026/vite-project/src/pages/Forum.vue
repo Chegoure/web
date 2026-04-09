@@ -139,7 +139,7 @@ main {
   justify-content: space-between;
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   /* background-color: #f4e9d3; */
   background-color: #efe9db;
 }
@@ -179,7 +179,7 @@ main {
 
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 .log-in__btn {
@@ -188,7 +188,7 @@ main {
   padding: 10px;
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   transform: translateY(-5px);
 }
