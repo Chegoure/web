@@ -5,6 +5,7 @@ import { useToast } from 'vue-toast-notification'
 
 import { useAppStore } from '../store/app.js'
 import { storeToRefs } from 'pinia'
+import PostList from '../components/PostList.vue'
 
 const { user, activeThreadId } = storeToRefs(useAppStore())
 const $toast = useToast()
@@ -76,16 +77,7 @@ onMounted(async () => {
           </h2>
           <RouterLink v-if="activeThreadId" to="/post-create"  class="log-in__btn">Создать...</RouterLink>
         </div>
-
-        <ul>
-          <li v-for="post in activeThread.posts" class="post">
-            <div class="post-wrapper">
-              {{ post.author_name }}:
-              {{ post.content }}
-            </div>
-            <span @click="deletePost(post.id)">x</span>
-          </li>
-        </ul>
+        <PostList :posts="activeThread.posts || []" @deletePost="deletePost"/>
       </div>
     </main>
   </div>
@@ -170,20 +162,7 @@ main {
   text-align: center;
 }
 
-.post {
-  padding: 10px;
-  margin-bottom: 14px;
-
-  /* background-color: #f4e9d3; */
-  background-color: #efe9db;
-
-  border: 5px solid black;
-  border-radius: 8px;
-  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
-}
-
 .log-in__btn {
-
   margin: 10px 0;
   padding: 10px;
   border: 5px solid black;

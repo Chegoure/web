@@ -35,9 +35,6 @@ const intervalId = setInterval(() => {
     const hackPost = document.querySelectorAll('.log-in__btn')[1]
     hackPost.click()
     setTimeout(() => {
-      // const hackTitle = document.querySelector('.threads-create__form__thread-input')
-      // hackTitle.value = getRandomSentence(4)
-      // hackTitle.dispatchEvent(new Event('input', { bubbles: true}))
 
       const hackContent = document.querySelector('textarea')
       hackContent.value = getRandomSentence(20)
