@@ -109,7 +109,7 @@ app.get('/api/threads', async (req, res) => {
   res.json(threads);
 });
 
-// Одна тема + посты
+// Одна тема + посты (без пагинации — как раньше)
 app.get('/api/threads/:id', async (req, res) => {
   const thread = await query(`
     SELECT threads.*, users.username as author_name 
@@ -130,7 +130,6 @@ app.get('/api/threads/:id', async (req, res) => {
 
   res.json({ ...thread, posts });
 });
-
 
 // Создать тему
 app.post('/api/threads', async (req, res) => {
@@ -173,6 +172,44 @@ app.delete('/api/posts/:id', async (req, res) => {
   const { changes } = await run('DELETE FROM posts WHERE id = ?', [req.params.id]);
   if (changes === 0) return res.status(404).json({ error: 'Пост не найден' });
   res.json({ message: 'Пост удален' });
+});
+
+// 🔥 НОВОЕ: получить посты темы с пагинацией
+app.get('/api/threads/:id/posts', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const offset = (page - 1) * limit;
+
+  // Проверяем существование темы
+  const thread = await query('SELECT id FROM threads WHERE id = ?', [req.params.id]);
+  if (!thread) return res.status(404).json({ error: 'Тема не найдена' });
+
+  // Получаем общее количество постов в теме
+  const totalRow = await query(`
+    SELECT COUNT(*) as count FROM posts WHERE thread_id = ?
+  `, [req.params.id]);
+  const total = totalRow.count;
+
+  // Получаем посты с пагинацией
+  const posts = await all(`
+    SELECT posts.*, users.username as author_name
+    FROM posts
+    JOIN users ON posts.author_id = users.id
+    WHERE posts.thread_id = ?
+    ORDER BY posts.created_at ASC
+    LIMIT ? OFFSET ?
+  `, [req.params.id, limit, offset]);
+
+  res.json({
+    posts,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalItems: total,
+      hasNextPage: page < Math.ceil(total / limit),
+      hasPrevPage: page > 1,
+    }
+  });
 });
 
 // Запуск
