@@ -8,6 +8,7 @@ const props = defineProps({
 
 const page = ref(0)
 const perPage = ref(3)
+
 const lastPage = computed(() => {
   return Math.round(props.posts.length / perPage.value - 1)
 })
@@ -63,11 +64,13 @@ const deletePost = (id) => {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
 
   min-height: 126px;
+  /* overflow-y: auto; */
 }
 
 .post-delete {
   font-weight: bold;
   margin-left: 5px;
+  max-height: 25px;
 }
 
 .pagination-panel {
