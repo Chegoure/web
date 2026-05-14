@@ -1,10 +1,11 @@
 <script setup>
-import axios from 'axios'
+
 import { useToast } from 'vue-toast-notification'
-import { ref, defineEmits, defineProps} from 'vue'
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '../store/app.js'
 import { useRouter } from 'vue-router'
+import threadApi from '@/api/thread'
 
 const router = useRouter()
 const { user } = storeToRefs(useAppStore())
@@ -14,7 +15,7 @@ const title = ref('')
 const content = ref('')
 
 const create = async () => {
-  const response = await axios.post('http://localhost:3000/api/threads', {
+  const response = await threadApi.createThread( {
     title: title.value,
     content: content.value,
     author_id: user.value.id

@@ -1,9 +1,9 @@
 <script setup>
 import { computed, onMounted, ref, watch, watchEffect } from 'vue'
 import PaginationPanel from './PaginationPanel.vue'
-import axios from 'axios'
 import { useAppStore } from '../store/app.js'
 import { storeToRefs } from 'pinia'
+import postApi from '@/api/post'
 
 const { activeThreadId } = storeToRefs(useAppStore())
 
@@ -23,7 +23,7 @@ const deletePost = (id) => {
 }
 
 watchEffect(async () => {
-  const response = await axios.get(`http://localhost:3000/api/threads/${activeThreadId.value}/posts?page=${page.value}&limit=3`)
+  const response = await postApi.getPostPaginated(activeThreadId.value, page.value)
   console.log(response)
   pagePosts.value = response.data.posts
   lastPage.value = response.data.pagination.totalPages

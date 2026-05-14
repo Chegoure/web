@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import axios from 'axios'
+import threadApi from '@/api/thread'
+import postApi from '@/api/post'
 import { useToast } from 'vue-toast-notification'
 
 import { useAppStore } from '../store/app.js'
 import { storeToRefs } from 'pinia'
-import PostList from '../components/PostList.vue'
 import PostListServerPaged from '../components/PostListServerPaged.vue'
 
 const { user, activeThreadId } = storeToRefs(useAppStore())
@@ -14,14 +14,14 @@ const threads = ref([])
 const activeThread = ref({})
 
 const getActiveThread = async (id) => {
-  const response = await axios.get('http://localhost:3000/api/threads/' + id)
+  const response = await threadApi.getActiveThread(id)
   console.log(response)
   activeThread.value = response.data
   activeThreadId.value = id
 }
 
 const deleteThread = async (id) => {
-  const response = await axios.delete('http://localhost:3000/api/threads/' + id)
+  const response = await threadApi.deleteThread(id)
   console.log(response)
   $toast.success(`Тема удалена!`)
   const deleteIndex = threads.value.findIndex((thread)=>{
@@ -31,7 +31,7 @@ const deleteThread = async (id) => {
 }
 
 const deletePost = async (id) => {
-  const response = await axios.delete('http://localhost:3000/api/posts/' + id)
+  const response = await postApi.deletePost(id)
   console.log(response)
   $toast.success(`Пост удален!`)
   const deleteIndex = activeThread.value.posts.findIndex((post)=>{
@@ -41,7 +41,7 @@ const deletePost = async (id) => {
 }
 
 onMounted(async () => {
-  const response = await axios.get('http://localhost:3000/api/threads')
+  const response = await threadApi.getThreads()
   console.log(response)
   threads.value = response.data
   if(activeThreadId.value) {

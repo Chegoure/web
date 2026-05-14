@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import axios from 'axios'
+import authApi from '@/api/auth.js'
 import { useToast } from 'vue-toast-notification'
 
 export const useAppStore = defineStore('app', () => {
@@ -17,10 +17,7 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const login = async (name, password) => {
-    const response = await axios.post('http://localhost:3000/api/login', {
-      username: name,
-      password: password
-    })
+    const response = await authApi.login(name, password)
     localStorage.setItem('user', JSON.stringify(response.data.user))
     user.value = response.data.user
     console.log(response)
@@ -29,10 +26,7 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const register = async (name, password) => {
-    const response = await axios.post('http://localhost:3000/api/register', {
-      username: name,
-      password: password
-    })
+    const response = await authApi.register(name, password)
     localStorage.setItem('user', JSON.stringify(response.data))
     user.value = response.data
 
