@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref, watch, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import PaginationPanel from './PaginationPanel.vue'
 import { useAppStore } from '../store/app.js'
 import { storeToRefs } from 'pinia'
@@ -10,7 +10,6 @@ const { activeThreadId } = storeToRefs(useAppStore())
 const emit = defineEmits(['deletePost'])
 
 const page = ref(0)
-const perPage = ref(3)
 const lastPage = ref(0)
 const pagePosts = ref([])
 

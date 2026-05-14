@@ -55,7 +55,6 @@ const back = () => {
           <textarea
             v-model="content"
             placeholder="Меня часто спрашивают: Как какать?..."
-            type="text"
           ></textarea>
         </div>
 
@@ -101,7 +100,7 @@ h2 {
 
 .threads-create__form {
   justify-content: center;
-  margin: 20px 0px;
+  margin: 20px 0;
 }
 
 .threads-create__form-inputs {
@@ -120,14 +119,9 @@ h2 {
   padding: 14px;
   border: 5px solid black;
   border-radius: 8px;
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   font-size: 16px;
-}
-
-.threads-create__form__author-input {
-  width: 100px;
-  margin: 0 20px;
 }
 
 .threads-create__form__thread-input {
