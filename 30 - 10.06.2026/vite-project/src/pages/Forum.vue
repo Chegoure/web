@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import threadApi from '@/api/thread'
-import postApi from '@/api/post'
 import { useToast } from 'vue-toast-notification'
 
 import { useAppStore } from '../store/app.js'
@@ -10,55 +9,45 @@ import PostListServerPaged from '../components/PostListServerPaged.vue'
 
 const { user, activeThreadId } = storeToRefs(useAppStore())
 const $toast = useToast()
+
 const threads = ref([])
 const activeThread = ref({})
 
 const getActiveThread = async (id) => {
   const response = await threadApi.getActiveThread(id)
-  console.log(response)
   activeThread.value = response.data
   activeThreadId.value = id
 }
 
 const deleteThread = async (id) => {
-  const response = await threadApi.deleteThread(id)
-  console.log(response)
-  $toast.success(`Тема удалена!`)
-  const deleteIndex = threads.value.findIndex((thread)=>{
-    return thread.id === id
-  })
-  threads.value.splice(deleteIndex, 1)
-}
+  await threadApi.deleteThread(id)
 
-const deletePost = async (id) => {
-  const response = await postApi.deletePost(id)
-  console.log(response)
-  $toast.success(`Пост удален!`)
-  const deleteIndex = activeThread.value.posts.findIndex((post)=>{
-    return post.id === id
-  })
-  activeThread.value.posts.splice(deleteIndex, 1)
+  $toast.success('Тема удалена!')
+
+  const deleteIndex = threads.value.findIndex((thread) => thread.id === id)
+  threads.value.splice(deleteIndex, 1)
 }
 
 onMounted(async () => {
   const response = await threadApi.getThreads()
-  console.log(response)
   threads.value = response.data
-  if(activeThreadId.value) {
+
+  if (activeThreadId.value) {
     getActiveThread(activeThreadId.value)
   }
-
 })
 </script>
 
 <template>
   <div class="container">
-    <h1 class="header--title">Форум {{ user.username }}</h1>
+    <h1 class="header--title">Форум - {{ user.username }}</h1>
     <main>
       <div class="sidebar">
         <div class="threads--title">
           <h2 class="threads--title-name">Темы:</h2>
-          <RouterLink to="/thread-create" class="log-in__btn">Создать...</RouterLink>
+          <RouterLink to="/thread-create" class="log-in__btn"
+            >Создать...</RouterLink
+          >
         </div>
         <ul>
           <li
@@ -73,12 +62,15 @@ onMounted(async () => {
       </div>
       <div class="content">
         <div class="content--title">
-          <h2 class="posts--title">
-            Посты:
-          </h2>
-          <RouterLink v-if="activeThreadId" to="/post-create"  class="log-in__btn">Создать...</RouterLink>
+          <h2 class="posts--title">Посты:</h2>
+          <RouterLink
+            v-if="activeThreadId"
+            to="/post-create"
+            class="log-in__btn"
+            >Создать...</RouterLink
+          >
         </div>
-        <PostListServerPaged @deletePost="deletePost"/>
+        <PostListServerPaged />
       </div>
     </main>
   </div>
@@ -124,8 +116,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 74px; 
-
+  min-height: 74px;
 }
 
 .thread {

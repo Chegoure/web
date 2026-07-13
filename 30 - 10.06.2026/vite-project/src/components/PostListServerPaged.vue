@@ -4,30 +4,49 @@ import PaginationPanel from './PaginationPanel.vue'
 import { useAppStore } from '../store/app.js'
 import { storeToRefs } from 'pinia'
 import postApi from '@/api/post'
+import { useToast } from 'vue-toast-notification'
+
+const $toast = useToast()
 
 const { activeThreadId } = storeToRefs(useAppStore())
-
-const emit = defineEmits(['deletePost'])
 
 const page = ref(0)
 const lastPage = ref(0)
 const pagePosts = ref([])
 
-const setPage = async (newPage) => {
+const setPage = (newPage) => {
   page.value = newPage
 }
 
-const deletePost = (id) => {
-  emit('deletePost', id)
+const loadPosts = async () => {
+  const response = await postApi.getPostPaginated(
+    activeThreadId.value,
+    page.value + 1,
+  )
+
+  pagePosts.value = response.data.posts
+  lastPage.value = response.data.pagination.totalPages - 1
 }
 
-watchEffect(async () => {
-  const response = await postApi.getPostPaginated(activeThreadId.value, page.value)
-  console.log(response)
-  pagePosts.value = response.data.posts
-  lastPage.value = response.data.pagination.totalPages
-})
+const deletePost = async (id) => {
+  await postApi.deletePost(id)
 
+  $toast.success('Пост удален!')
+
+  // Если на странице был один пост, предварительно переходим
+  // на предыдущую страницу (если она существует)
+  if (pagePosts.value.length === 1 && page.value > 0) {
+    page.value--
+  }
+
+  await loadPosts()
+}
+
+watchEffect(() => {
+  if (activeThreadId.value) {
+    loadPosts()
+  }
+})
 </script>
 
 <template>
@@ -42,6 +61,7 @@ watchEffect(async () => {
   </ul>
 
   <PaginationPanel
+    v-if="pagePosts.length"
     :page="page"
     :lastPage="lastPage"
     @setPage="setPage"

@@ -1,10 +1,9 @@
 <script setup>
-
 import { computed, ref } from 'vue'
 import PaginationPanel from './PaginationPanel.vue'
 
 const props = defineProps({
-  posts: Array
+  posts: Array,
 })
 
 const page = ref(0)
@@ -24,10 +23,10 @@ const lastPage = computed(() => {
 })
 
 const emit = defineEmits(['deletePost'])
+
 const deletePost = (id) => {
   emit('deletePost', id)
 }
-
 </script>
 
 <template>
@@ -46,13 +45,10 @@ const deletePost = (id) => {
     :lastPage="lastPage"
     @setPage="setPage"
     v-if="posts.length"
-
   />
-
 </template>
 
 <style scoped>
-
 .post {
   display: flex;
 
@@ -73,5 +69,4 @@ const deletePost = (id) => {
   margin-left: 5px;
   max-height: 25px;
 }
-
 </style>
