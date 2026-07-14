@@ -1,5 +1,4 @@
 <script setup>
-
 import { useToast } from 'vue-toast-notification'
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
@@ -15,10 +14,10 @@ const title = ref('')
 const content = ref('')
 
 const create = async () => {
-  const response = await threadApi.createThread( {
+  const response = await threadApi.createThread({
     title: title.value,
-    content: content.value,
-    author_id: user.value.id
+    content: title.value,
+    author_id: user.value.id,
   })
   console.log(response)
 
@@ -36,30 +35,24 @@ const back = () => {
     <h1 class="header--title">Форум - Создание новой темы</h1>
 
     <div class="threads-create">
-      <!-- <h2>Создание новой темы</h2> -->
-
       <div class="threads-create__form">
         <div class="threads-create__form-inputs">
-
-          <h2>Тема</h2>
+          <h2>Тема:</h2>
           <input
             v-model="title"
             class="threads-create__form__thread-input"
-            placeholder="Как какать?"
+            placeholder="Вакансии frontend"
             type="text"
           />
         </div>
 
-        <div class="threads-create__form-content">
-          <h2>Содержание</h2>
-          <textarea
-            v-model="content"
-            placeholder="Меня часто спрашивают: Как какать?..."
-          ></textarea>
+        <!-- Обертка для кнопок, чтобы центрировать их и задать зазор -->
+        <div class="threads-create__form-actions">
+          <button @click="back" class="threads-create__form-btn">Назад</button>
+          <button @click="create" class="threads-create__form-btn">
+            Готово
+          </button>
         </div>
-
-        <button @click="back" class="threads-create__form-btn">Назад</button>
-        <button @click="create" class="threads-create__form-btn">Готово</button>
       </div>
     </div>
   </div>
@@ -74,7 +67,6 @@ const back = () => {
 .header--title {
   padding: 2px;
   margin: 20px 0;
-
   text-align: center;
   background-color: #f4e9d3;
   border: 5px solid;
@@ -86,7 +78,6 @@ const back = () => {
   margin: 0 auto;
   padding: 10px 0;
   text-align: center;
-
   background-color: #f4e9d3;
   border: 5px solid black;
   border-radius: 8px;
@@ -99,51 +90,48 @@ h2 {
 }
 
 .threads-create__form {
-  justify-content: center;
   margin: 20px 0;
 }
 
 .threads-create__form-inputs {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 36px;
 }
 
-.threads-create__form-content {
-  text-align: center;
-  margin-top: 36px;
+.threads-create__form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .threads-create__form-btn {
-  margin-top: 20px;
   padding: 14px;
   border: 5px solid black;
   border-radius: 8px;
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   font-size: 16px;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.threads-create__form-btn:hover {
+  transform: translateY(-4px);
 }
 
 .threads-create__form__thread-input {
-  margin: 0 20px;
+  width: 500px;
 }
 
 input {
+  font-size: 20px;
   padding: 10px;
   border-radius: 8px;
   border: 5px solid;
   background-color: #efe9db;
-  transform: translateY(-5px);
   text-align: center;
-}
-
-textarea {
-  width: 80%;
-  min-height: 200px;
-  padding: 10px;
-  margin: 0 20px;
-  border: 5px solid;
-  background-color: #efe9db;
-  border-radius: 8px;
 }
 </style>

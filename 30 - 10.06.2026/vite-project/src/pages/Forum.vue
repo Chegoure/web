@@ -90,12 +90,39 @@ main {
 
 .sidebar {
   width: 30%;
-  height: 30vw; /*пока что*/
+  height: 30vw;
+
   padding: 10px;
 
   background-color: #f4e9d3;
   border: 5px solid black;
   border-radius: 8px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: black #efe9db;
+}
+
+/* Chrome, Edge, Safari */
+.sidebar::-webkit-scrollbar {
+  width: 14px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #efe9db;
+  border-left: 3px solid black;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: black;
+  border: 3px solid #efe9db;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #333;
 }
 
 .content {

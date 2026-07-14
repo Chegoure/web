@@ -13,14 +13,12 @@ const content = ref('')
 const { user, activeThreadId } = storeToRefs(useAppStore())
 
 const create = async () => {
-  const response = await postApi.createPost(activeThreadId.value,
-    {
-      content: content.value,
-      author_id: user.value.id
-    },
-  )
+  const response = await postApi.createPost(activeThreadId.value, {
+    content: content.value,
+    author_id: user.value.id,
+  })
   console.log(response)
-  $toast.success(`Пост создан, ${response.data}!`)
+  $toast.success(`Пост создан!`)
   await router.push('/')
 }
 
@@ -37,17 +35,19 @@ const back = () => {
       <!-- <h2>Создание нового поста</h2> -->
 
       <div class="threads-create__form">
-
         <div class="threads-create__form-content">
-          <h2>Пост</h2>
+          <h2>Пост:</h2>
           <textarea
             v-model="content"
-            placeholder="Меня часто спрашивают: Как какать?..."
+            placeholder="Как устроится на работу Frontend разработчиком..."
           ></textarea>
         </div>
-
-        <button @click="back" class="threads-create__form-btn">Назад</button>
-        <button @click="create" class="threads-create__form-btn">Готово</button>
+        <div class="threads-create__form-actions">
+          <button @click="back" class="threads-create__form-btn">Назад</button>
+          <button @click="create" class="threads-create__form-btn">
+            Готово
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -80,6 +80,13 @@ const back = () => {
   border-radius: 8px;
 }
 
+.threads-create__form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
 h2 {
   padding-bottom: 10px;
   text-align: center;
@@ -104,6 +111,11 @@ h2 {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   font-size: 16px;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.threads-create__form-btn:hover {
+  transform: translateY(-4px);
 }
 
 input {
@@ -116,6 +128,7 @@ input {
 }
 
 textarea {
+  font-size: 16px;
   width: 80%;
   min-height: 200px;
   padding: 10px;

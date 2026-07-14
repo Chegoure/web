@@ -75,7 +75,7 @@ const setPage = (newPage) => {
 }
 
 .panel-switch-page--active {
-  background-color: #acd3d6;
+  background-color: #b3d6d3;
   color: #2e2e2e;
 }
 </style>

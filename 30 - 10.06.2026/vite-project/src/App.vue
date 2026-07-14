@@ -10,21 +10,19 @@ const { user } = storeToRefs(appStore)
 onMounted(() => {
   init()
 })
-
 </script>
 
 <template>
   <nav>
-    <div v-if="!user.id" >
+    <div v-if="!user.id">
       <RouterLink to="/login"> Login</RouterLink>
       <RouterLink to="/register"> Register</RouterLink>
     </div>
-<!--    <div v-else>-->
-<!--      <RouterLink to="/"> Home</RouterLink>-->
-<!--      <RouterLink to="/thread-create"> Create-Thread</RouterLink>-->
-<!--      <RouterLink to="/post-create"> Create-Post</RouterLink>-->
-<!--    </div>-->
-
+    <!--    <div v-else>-->
+    <!--      <RouterLink to="/"> Home</RouterLink>-->
+    <!--      <RouterLink to="/thread-create"> Create-Thread</RouterLink>-->
+    <!--      <RouterLink to="/post-create"> Create-Post</RouterLink>-->
+    <!--    </div>-->
   </nav>
   <main>
     <div class="container-big">
