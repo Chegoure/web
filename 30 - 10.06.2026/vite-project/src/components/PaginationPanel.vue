@@ -60,6 +60,12 @@ const setPage = (newPage) => {
   border: 5px solid black;
   border-radius: 8px;
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-switch-page:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 .pagination-panel {

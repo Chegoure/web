@@ -121,6 +121,7 @@ main {
 
 .thread {
   padding: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   border: 5px solid black;
@@ -128,6 +129,12 @@ main {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   /* background-color: #f4e9d3; */
   background-color: #efe9db;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thread:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 .header--title {
@@ -164,5 +171,11 @@ main {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   background-color: #efe9db;
   transform: translateY(-5px);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.log-in__btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 </style>
