@@ -55,7 +55,7 @@ const back = () => {
 
 <style scoped>
 .container {
-  width: 1200px;
+  width: min(1200px, calc(100% - 24px));
   margin: 0 auto;
 }
 
@@ -70,7 +70,7 @@ const back = () => {
 }
 
 .threads-create {
-  height: 30vw; /* Пока что!!! */
+  min-height: 63vh;
   margin: 0 auto;
   padding: 10px 0;
   text-align: center;
@@ -116,6 +116,7 @@ h2 {
 
 .threads-create__form-btn:hover {
   transform: translateY(-4px);
+  box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 input {
@@ -136,5 +137,38 @@ textarea {
   border: 5px solid;
   background-color: #efe9db;
   border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .threads-create {
+    height: auto;
+    padding: 20px;
+  }
+
+  textarea {
+    width: 100%;
+    margin: 0;
+    min-height: 180px;
+    box-sizing: border-box;
+  }
+
+  .threads-create__form-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header--title {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .threads-create__form-btn {
+    font-size: 14px;
+  }
 }
 </style>

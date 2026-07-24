@@ -15,14 +15,13 @@ const handleLogin = () => {
 <template>
   <div class="log-in__form">
     <h1 class="header--title">Форум</h1>
-    <input v-model="name" placeholder="username" type="text">
-    <input v-model="password" placeholder="password" type="text">
+    <input v-model="name" placeholder="username" type="text" />
+    <input v-model="password" placeholder="password" type="text" />
     <button class="log-in__btn" @click="handleLogin">Войти</button>
   </div>
 </template>
 
 <style scoped>
-
 .log-in__form {
   display: flex;
   justify-content: center; /* по горизонтали */
@@ -59,4 +58,43 @@ input {
   background-color: #f4e9d3;
 }
 
+@media (max-width: 768px) {
+  .log-in__form {
+    height: auto;
+    min-height: 70vh;
+    padding: 30px 20px;
+  }
+
+  .header--title {
+    font-size: 36px;
+    padding: 0;
+  }
+
+  input {
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  .log-in__btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header--title {
+    font-size: 28px;
+  }
+
+  input {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .log-in__btn {
+    font-size: 12px;
+    padding: 12px;
+  }
+}
 </style>

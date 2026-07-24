@@ -45,30 +45,47 @@ const deletePost = async (id) => {
 watchEffect(() => {
   if (activeThreadId.value) {
     loadPosts()
+  } else {
+    page.value = 1
+    lastPage.value = 0
+    pagePosts.value = []
   }
 })
 </script>
 
 <template>
-  <ul>
-    <li v-for="post in pagePosts" class="post">
-      <div class="post-wrapper">
-        {{ post.author_name }}:
-        {{ post.content }}
-      </div>
-      <span @click="deletePost(post.id)" class="post-delete">x</span>
-    </li>
-  </ul>
+  <div class="posts-container">
+    <ul class="posts-list">
+      <li v-for="post in pagePosts" class="post">
+        <div class="post-wrapper">
+          {{ post.author_name }}:
+          {{ post.content }}
+        </div>
+        <span @click="deletePost(post.id)" class="post-delete">x</span>
+      </li>
+    </ul>
 
-  <PaginationPanel
-    v-if="pagePosts.length"
-    :page="page"
-    :lastPage="lastPage"
-    @setPage="setPage"
-  />
+    <PaginationPanel
+      v-if="pagePosts.length"
+      :page="page"
+      :lastPage="lastPage"
+      @setPage="setPage"
+    />
+  </div>
 </template>
 
 <style scoped>
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.posts-list {
+  flex: 1;
+}
+
 .post {
   display: flex;
   padding: 10px;
@@ -79,9 +96,9 @@ watchEffect(() => {
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
   height: 126px;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
   word-break: break-word;
   overflow-wrap: break-word;
+  overflow: hidden;
   font-size: 17px;
 }
 .post:hover {
@@ -93,5 +110,52 @@ watchEffect(() => {
   font-weight: bold;
   margin-left: 5px;
   max-height: 25px;
+
+  cursor: pointer;
+  flex-shrink: 0;
+  padding-left: 10px;
+}
+
+.post-wrapper {
+  flex: 1;
+}
+
+/* @media (max-width: 768px) {
+  .post {
+    padding: 8px;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .post-wrapper {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .post-delete {
+    margin-left: 10px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+} */
+
+@media (max-width: 600px) {
+  .post {
+    padding: 6px;
+    height: 100px;
+  }
+
+  .post-wrapper {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .post-delete {
+    font-size: 12px;
+    padding-left: 6px;
+  }
 }
 </style>

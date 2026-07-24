@@ -34,8 +34,6 @@ onMounted(() => {
 <style>
 * {
   font-family: 'Press Start 2P', sans-serif;
-  /* font-weight: 400; */
-  /* font-style: normal; */
 }
 
 body {
@@ -48,11 +46,11 @@ li {
 }
 
 .container-big {
-  width: 1400px;
-  height: 40vw; /* Пока что */
+  width: min(1400px, calc(100% - 32px));
+  min-height: 80vh;
   margin: 30px auto;
-  position: relative; /*Добавил для блюра*/
-  z-index: 0; /*Добавил для блюра*/
+  position: relative;
+  z-index: 0;
 
   border: 5px solid black;
   border-radius: 8px;
@@ -60,8 +58,34 @@ li {
   background-image: url('./assets/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: center;
+}
+
+@media (max-width: 1200px) {
+  .container-big {
+    width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 768px) {
+  .container-big {
+    width: calc(100% - 16px);
+    margin: 10px auto;
+    @media (max-width: 1200px) {
+      .container-big {
+        width: calc(100% - 24px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container-big {
+        width: calc(100% - 16px);
+        margin: 10px auto;
+        border-width: 3px;
+        /* min-height: auto; */
+      }
+    }
+  }
 }
 
 /* .container-big::before {

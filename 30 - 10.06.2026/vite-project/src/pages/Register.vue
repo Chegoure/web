@@ -8,17 +8,18 @@ const name = ref('')
 const password = ref('')
 
 const handleRegister = async () => {
- await register(name.value, password.value)
+  await register(name.value, password.value)
 }
-
 </script>
 
 <template>
   <div class="registration__form">
     <h1 class="header--title">Форум</h1>
-    <input v-model="name" placeholder="username" type="text">
-    <input v-model="password" placeholder="password" type="text">
-    <button class="registration__btn" @click="handleRegister">Зарегистрироваться</button>
+    <input v-model="name" placeholder="username" type="text" />
+    <input v-model="password" placeholder="password" type="text" />
+    <button class="registration__btn" @click="handleRegister">
+      Зарегистрироваться
+    </button>
   </div>
 </template>
 
@@ -59,4 +60,42 @@ input {
   background-color: #f4e9d3;
 }
 
+@media (max-width: 768px) {
+  .registration__form {
+    height: auto;
+    min-height: 70vh;
+    padding: 30px 20px;
+  }
+
+  .header--title {
+    font-size: 36px;
+    padding: 0;
+  }
+
+  input {
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  .registration__btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header--title {
+    font-size: 28px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  .registration__btn {
+    font-size: 12px;
+    padding: 12px;
+  }
+}
 </style>

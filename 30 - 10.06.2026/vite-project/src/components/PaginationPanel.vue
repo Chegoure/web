@@ -72,10 +72,33 @@ const setPage = (newPage) => {
   display: flex;
   justify-content: center;
   padding-top: 12px;
+  margin-bottom: 12px;
 }
 
 .panel-switch-page--active {
   background-color: #b3d6d3;
   color: #2e2e2e;
+}
+
+@media (max-width: 900px) {
+  .pagination-panel {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .panel-switch-page {
+    margin: 0;
+    padding: 8px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel-switch-page {
+    padding: 6px;
+    font-size: 10px;
+  }
 }
 </style>

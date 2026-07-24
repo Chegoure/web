@@ -51,17 +51,17 @@ const deletePost = (id) => {
 <style scoped>
 .post {
   display: flex;
-
   padding: 10px;
   margin-bottom: 14px;
-
   background-color: #efe9db;
   border: 5px solid black;
   border-radius: 8px;
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
-
-  min-height: 126px;
-  /* overflow-y: auto; */
+  height: 126px;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 17px;
 }
 
 .post-delete {

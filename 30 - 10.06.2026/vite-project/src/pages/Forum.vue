@@ -26,6 +26,11 @@ const deleteThread = async (id) => {
 
   const deleteIndex = threads.value.findIndex((thread) => thread.id === id)
   threads.value.splice(deleteIndex, 1)
+
+  if (activeThreadId.value === id) {
+    activeThreadId.value = 0
+    activeThread.value = {}
+  }
 }
 
 onMounted(async () => {
@@ -78,9 +83,8 @@ onMounted(async () => {
 
 <style scoped>
 .container {
-  width: 1200px;
+  width: min(1200px, calc(100% - 24px));
   margin: 0 auto;
-  /* background: #dcdcdc; */
 }
 
 main {
@@ -90,9 +94,10 @@ main {
 
 .sidebar {
   width: 30%;
-  height: 30vw;
+  min-height: 30vw;
 
-  padding: 10px;
+  padding: 10px 20px;
+  margin-bottom: 15px;
 
   background-color: #f4e9d3;
   border: 5px solid black;
@@ -126,8 +131,13 @@ main {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+
   width: 70%;
+  min-height: 63vh;
   margin: 0 auto;
+  margin-bottom: 15px;
   padding: 10px 20px;
 
   background-color: #f4e9d3;
@@ -148,20 +158,25 @@ main {
 
 .thread {
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+
   border: 5px solid black;
   border-radius: 8px;
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.9);
-  /* background-color: #f4e9d3; */
   background-color: #efe9db;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .thread:hover {
   transform: translateY(-4px);
-  box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.9);
+  box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 .header--title {
@@ -204,5 +219,77 @@ main {
 .log-in__btn:hover {
   transform: translateY(-8px);
   box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
+}
+
+.thread span {
+  cursor: pointer;
+  flex-shrink: 0;
+  padding-left: 10px;
+}
+
+@media (max-width: 1252px) {
+  main {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    min-height: 63vh;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 280px;
+    box-sizing: border-box;
+  }
+
+  .header--title {
+    font-size: 26px;
+  }
+
+  .threads--title,
+  .content--title {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-height: 960px) {
+  .content {
+    min-height: 55vh;
+  }
+}
+
+@media (max-height: 900px) {
+  .content {
+    min-height: 62vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    margin-bottom: 2px;
+  }
+
+  .thread {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .log-in__btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .header--title {
+    font-size: 20px;
+    margin: 12px 0;
+  }
+
+  .threads--title-name,
+  .posts--title {
+    font-size: 18px;
+  }
 }
 </style>

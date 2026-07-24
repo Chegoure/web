@@ -60,7 +60,7 @@ const back = () => {
 
 <style scoped>
 .container {
-  width: 1200px;
+  width: min(1200px, calc(100% - 24px));
   margin: 0 auto;
 }
 
@@ -74,8 +74,9 @@ const back = () => {
 }
 
 .threads-create {
-  height: 30vw; /* Пока что!!! */
+  min-height: 63vh;
   margin: 0 auto;
+  margin-bottom: 15px;
   padding: 10px 0;
   text-align: center;
   background-color: #f4e9d3;
@@ -120,6 +121,7 @@ h2 {
 
 .threads-create__form-btn:hover {
   transform: translateY(-4px);
+  box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.9);
 }
 
 .threads-create__form__thread-input {
@@ -133,5 +135,55 @@ input {
   border: 5px solid;
   background-color: #efe9db;
   text-align: center;
+}
+
+@media (max-width: 900px) {
+  input {
+    font-size: 16px;
+  }
+
+  .threads-create {
+    height: auto;
+    padding: 20px;
+  }
+
+  .threads-create__form-inputs {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .threads-create__form__thread-input {
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 180px;
+  }
+
+  .threads-create__form-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header--title {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .threads-create__form-btn {
+    font-size: 14px;
+  }
 }
 </style>
