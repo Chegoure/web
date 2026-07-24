@@ -47,7 +47,7 @@ li {
 
 .container-big {
   width: min(1400px, calc(100% - 32px));
-  min-height: 80vh;
+  min-height: 98vh;
   margin: 30px auto;
   position: relative;
   z-index: 0;
